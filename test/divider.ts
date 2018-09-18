@@ -2,14 +2,35 @@
  * @Author: qiansc
  * @Date: 2018-09-17 23:00:31
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 11:20:50
+ * @Last Modified time: 2018-09-18 12:40:10
  */
 import {expect} from "chai";
 import {MiddlewareFactory as factory} from "../src/index";
-import {Copy, Divider, Noop} from "../src/index";
+import {Copy, Deformat, Divider, Noop} from "../src/index";
 import {GatherCallback, Middleware, MiddlewareOptions, Result} from "../src/index";
 
-describe("Divider Test", () => {
+describe("Abstract Divider Test", () => {
+  it("Make Twice Divider", () => {
+    class Twice extends Divider {
+      protected divide(result: Result): Result[] {
+        return [result, result];
+      }
+    }
+    const twice = new Twice();
+    let times = 0;
+    twice.next({
+      a: new Noop(),
+    });
+    twice.handle(["a", "b"], () => {
+      console.log("gather of abstract twice %s", ++ times);
+    });
+    expect(times).to.be.eq(2);
+  });
+
+});
+
+describe("Divider.Copy Test", () => {
+
   it("Copy", () => {
     const copy = new Copy({times: 2});
     const noop = new Noop();
@@ -53,22 +74,46 @@ describe("Divider Test", () => {
     });
     expect(times).to.be.eq(6);
   });
+});
 
-  it("Abstract Divider Test", () => {
-    class Twice extends Divider {
-      protected divide(result: Result): Result[] {
-        return [result, result];
-      }
-    }
-    const twice = new Twice();
+describe("Divider.Deformat Test", () => {
+
+  it ("Divider.Deformat", () => {
+    const combined = `$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"`;
+    const log = `192.168.203.111 - - [03/Dec/2014:22:07:37 -0800] "GET /api/foo/bar?key=value&key=has space&key has \x22&key2=var2 HTTP/1.1" 404 576 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"`;
+    const deformat = new Deformat({
+      combined,
+      nextEach: {
+        require: "gather",
+      },
+    });
     let times = 0;
-    twice.next({
-      a: new Noop(),
+    deformat.handle(["log", log], (result) => {
+      console.log(result);
+      if (result && result[0] && result[1]) {
+        times ++;
+      }
     });
-    twice.handle(["a", "b"], () => {
-      console.log("gather of abstract twice %s", ++ times);
-    });
-    expect(times).to.be.eq(2);
+    expect(times).to.be.eq(combined.split("$").length - 1);
   });
 
+  it ("Divider.Deformat Null", () => {
+    const combined = "A$sssB";
+    const log = `192.168.203.111 - - [03/Dec/2014:22:07:37 -0800] "GET /api/foo/bar?key=value&key=has space&key has \x22&key2=var2 HTTP/1.1" 404 576 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"`;
+    const deformat = factory({
+      combined,
+      nextEach: {
+        require: "gather",
+      },
+      require: "deformat",
+    });
+    let times = 0;
+    deformat.handle(["log", log], (result) => {
+      console.log(result);
+      if (result && result[0] && result[1]) {
+        times ++;
+      }
+    });
+    expect(times).to.be.eq(0);
+  });
 });

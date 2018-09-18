@@ -1,8 +1,8 @@
 /*
  * @Author: qiansc
- * @Date: 2018-09-16 22:35:06
+ * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 10:55:14
+ * @Last Modified time: 2018-09-17 12:54:01
  */
 import {MiddlewareFactory as factory} from "./factory";
 import {GatherCallback, Middleware, MiddlewareAction, MiddlewareOptions, Result} from "./middleware";

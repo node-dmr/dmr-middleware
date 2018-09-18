@@ -12,7 +12,7 @@ export class Copy extends Divider {
     super(options);
   }
   protected divide(result: Result): Result[] {
-    const results = [];
+    const results: Result[] = [];
     for (let index = 0; index < (this.options as CopyOptions).times; index++) {
       results.push(result);
     }

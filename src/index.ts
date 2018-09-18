@@ -7,16 +7,17 @@ import { Noop } from "./noop";
  * @Last Modified time: 2018-09-18 00:31:51
  */
 
- // Factory
-
 // Abstract Class
 export * from "./middleware";
 export * from "./divider";
 
 // Divider
 export * from "./divider/copy";
+export * from "./divider/deformat";
 
 // Others
 export {Noop} from "./noop";
-//
-export * from "./factory";
+export {Gather} from "./gather";
+
+ // Factory
+export {MiddlewareFactory} from "./factory";

@@ -9,7 +9,7 @@
     "skipDefaultLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators" : true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "strictNullChecks": true
   },
   "include": [ "src/**/*.ts"],
