@@ -2,9 +2,9 @@
  * @Author: qiansc
  * @Date: 2018-09-16 22:35:06
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 01:30:42
+ * @Last Modified time: 2018-09-18 10:55:14
  */
-import factory from "./factory";
+import {MiddlewareFactory as factory} from "./factory";
 import {GatherCallback, Middleware, MiddlewareAction, MiddlewareOptions, Result} from "./middleware";
 import ResultsHandler from "./results-handler";
 // import {PairOptions} from "./pair";

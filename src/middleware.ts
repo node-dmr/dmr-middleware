@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:10:51
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 00:39:49
+ * @Last Modified time: 2018-09-18 10:39:15
  */
 
 export abstract class Middleware {
@@ -26,4 +26,4 @@ export type Result = [string, string];
 export interface MiddlewareAction {
   [key: string]: MiddlewareOptions | Middleware;
 }
-export type GatherCallback = (data: Result) => void;
+export type GatherCallback = (data?: Result) => void;

@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-18 00:29:31
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 00:34:43
+ * @Last Modified time: 2018-09-18 10:39:18
  */
 import {GatherCallback, Middleware, MiddlewareOptions, Result} from "./middleware";
 
@@ -12,5 +12,6 @@ export class Noop extends Middleware {
   }
   protected _handle(result: Result, gather: GatherCallback) {
     // do nothing
+    gather();
   }
 }
