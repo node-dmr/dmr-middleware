@@ -1,9 +1,9 @@
 {
   "name": "dmr-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "discription": "Utils for node-dmr",
   "scripts": {
-    "preversion" : "tsc && npm run lint && npm run cover",
+    "preversion": "tsc && npm run lint && npm run cover",
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "doc": "gulp doc",
     "test": "node_modules/mocha/bin/_mocha --require ts-node/register --require source-map-support/register -t 3000 --recursive",
