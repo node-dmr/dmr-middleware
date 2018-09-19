@@ -52,4 +52,29 @@ describe("Divider.Copy Test", () => {
     });
     expect(times).to.be.eq(6);
   });
+
+  it("Copy && Gather 2", () => {
+    const copy = factory({
+      next: "gather",
+      require: "copy",
+      times: 2,
+    });
+    let times = 0;
+    copy.handle(["key", "value"], () => {
+      console.log("copy & gather run times %s", ++times);
+    });
+    expect(times).to.be.eq(2);
+  });
+
+  it("Copy && Gather 3", () => {
+    const copy = new Copy({times: 3});
+    copy.next("gather");
+    copy.next({require: "gather"});
+    let times = 0;
+    copy.handle(["key", "value"], () => {
+      console.log("copy & gather run times %s", ++times);
+    });
+    expect(times).to.be.eq(6);
+  });
+
 });

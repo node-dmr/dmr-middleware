@@ -6,14 +6,15 @@
  */
 import {Copy, Deformat, Regexp, Split} from "./index";
 import {Gather, Middleware, Noop} from "./index";
-import {CopyOptions, DeformatOptions, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
+import {CopyOptions, DeformatOptions, DividerOptions, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
 
 export function MiddlewareFactory(options:
   MiddlewareOptions |
   DeformatOptions |
   CopyOptions |
   RegexpOptions |
-  SplitOptions): Middleware {
+  SplitOptions |
+  DividerOptions): Middleware {
 
   switch (options.require) {
     case "copy":

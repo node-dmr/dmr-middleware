@@ -16,10 +16,6 @@ export abstract class Middleware {
   protected abstract _handle(result: Result, gather: GatherCallback): void;
 }
 export interface MiddlewareOptions {
-  nextList?: MiddlewareOptions[];
-  nextEach?: MiddlewareOptions;
-  nextIndex?: MiddlewareAction;
-  next?: MiddlewareAction;
   require?: string;
 }
 

@@ -11,7 +11,7 @@ import ResultsHandler from "./results-handler";
 
 export abstract class Divider extends Middleware {
   protected handlers: ResultsHandler[] = [];
-  constructor(options: MiddlewareOptions = {}) {
+  constructor(options: DividerOptions = {}) {
     super(options);
 
     // next: {"key": MO, "key": M}
@@ -20,6 +20,8 @@ export abstract class Divider extends Middleware {
     if (options.nextEach) {this.nextEach(options.nextEach); }
     // nextList: [MO, MO, MO]
     if (options.nextList) {this.nextList(options.nextList); }
+
+    if (options.next) {this.next(options.next); }
     // this.parseNextHandler(options);
   }
 
@@ -45,6 +47,13 @@ export abstract class Divider extends Middleware {
     });
   }
 
+  public next(options: MiddlewareOptions | Middleware | string) {
+    if (options === "gather") {
+      options = factory({require: "gather"});
+    }
+    this.nextEach(options as MiddlewareOptions | Middleware);
+  }
+
   protected _handle(result: Result, gather: GatherCallback) {
     const parts = this.divide(result);
     this.handlers.forEach((handler) => {
@@ -55,6 +64,9 @@ export abstract class Divider extends Middleware {
   protected abstract divide(result: Result): Result[];
 }
 
-// export interface DividerOptions extends MiddlewareOptions {
-//   [index: string]: Array<PairOptions | DividerOptions>
-// }
+export interface DividerOptions extends MiddlewareOptions {
+  nextList?: MiddlewareOptions[];
+  nextEach?: MiddlewareOptions;
+  nextIndex?: MiddlewareAction;
+  next?: MiddlewareAction | "string";
+}

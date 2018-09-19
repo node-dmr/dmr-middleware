@@ -4,8 +4,8 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-09-18 00:09:59
  */
-import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Divider, DividerOptions} from "../divider";
+import {Result} from "../middleware";
 
 export class Copy extends Divider {
   constructor(options: CopyOptions) {
@@ -20,6 +20,6 @@ export class Copy extends Divider {
   }
 }
 
-export interface CopyOptions extends MiddlewareOptions {
+export interface CopyOptions extends DividerOptions {
   times: number;
 }

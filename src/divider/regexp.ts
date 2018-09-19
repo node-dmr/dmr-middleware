@@ -4,8 +4,8 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-09-18 23:03:55
  */
-import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Divider, DividerOptions} from "../divider";
+import {Result} from "../middleware";
 
 export class Regexp extends Divider {
   private partten: RegExp;
@@ -35,6 +35,6 @@ export class Regexp extends Divider {
   }
 }
 
-export interface RegexpOptions extends MiddlewareOptions {
+export interface RegexpOptions extends DividerOptions {
   partten: string | RegExp;
 }
