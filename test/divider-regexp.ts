@@ -38,7 +38,7 @@ describe("Divider.Regexp Test", () => {
       partten:
       /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?)?(?:#(.*))?$/,
     });
-    regexp.next({
+    regexp.nextIndex({
       1: {require: "gather"},
       3: {require: "gather"},
     });

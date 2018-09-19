@@ -16,7 +16,7 @@ describe("Abstract Divider Test", () => {
     }
     const twice = new Twice();
     let times = 0;
-    twice.next({
+    twice.nextIndex({
       a: new Noop(),
     });
     twice.handle(["a", "b"], () => {

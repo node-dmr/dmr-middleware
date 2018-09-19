@@ -11,7 +11,7 @@ describe("Divider.Split Test : Should gather C && A", () => {
 
   it ("Divider.Split", () => {
     const spliter = new Split({
-      next: {
+      nextIndex: {
         2: {
           require: "gather",
         },

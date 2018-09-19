@@ -14,7 +14,7 @@ describe("Divider.Copy Test", () => {
     const noop = new Noop();
     let times = 0;
     // 2 times
-    copy.next({0: noop});
+    copy.nextIndex({0: noop});
     // 2 times
     copy.nextEach(noop);
     // 2 times
@@ -28,14 +28,14 @@ describe("Divider.Copy Test", () => {
   it("Copy by Config", () => {
     const copy = factory({
       // 3 time
-      next: {
+      nextEach: {
+        require: "noop",
+      },
+      // 3 time
+      nextIndex: {
         key0: {
           require: "noop",
         },
-      },
-      // 3 time
-      nextEach: {
-        require: "noop",
       },
       // 0 time cause list deal with key = 0 1 2 3 but not "key0"
       nextList: [{

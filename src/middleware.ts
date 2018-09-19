@@ -18,6 +18,7 @@ export abstract class Middleware {
 export interface MiddlewareOptions {
   nextList?: MiddlewareOptions[];
   nextEach?: MiddlewareOptions;
+  nextIndex?: MiddlewareAction;
   next?: MiddlewareAction;
   require?: string;
 }

@@ -15,7 +15,7 @@ export abstract class Divider extends Middleware {
     super(options);
 
     // next: {"key": MO, "key": M}
-    if (options.next) {this.next(options.next); }
+    if (options.nextIndex) {this.nextIndex(options.nextIndex); }
     // nextEach: MO
     if (options.nextEach) {this.nextEach(options.nextEach); }
     // nextList: [MO, MO, MO]
@@ -37,13 +37,14 @@ export abstract class Divider extends Middleware {
     this.handlers.push(new ResultsHandler(m));
   }
   // next 重载实现
-  public next(action: MiddlewareAction) {
+  public nextIndex(action: MiddlewareAction) {
     Object.keys(action).forEach((index) => {
       const M = action[index];
       const m: Middleware = M instanceof Middleware ? M : factory(M);
       this.handlers.push(new ResultsHandler(m, index.toString()));
     });
   }
+
   protected _handle(result: Result, gather: GatherCallback) {
     const parts = this.divide(result);
     this.handlers.forEach((handler) => {
