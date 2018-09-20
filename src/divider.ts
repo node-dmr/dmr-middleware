@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-17 12:54:01
+ * @Last Modified time: 2018-09-20 16:46:26
  */
 import {MiddlewareFactory as factory} from "./factory";
 import {GatherCallback, Middleware, MiddlewareAction, MiddlewareOptions, Result} from "./middleware";
@@ -68,5 +68,5 @@ export interface DividerOptions extends MiddlewareOptions {
   nextList?: MiddlewareOptions[];
   nextEach?: MiddlewareOptions;
   nextIndex?: MiddlewareAction;
-  next?: MiddlewareAction | "string";
+  next?: MiddlewareAction | string;
 }

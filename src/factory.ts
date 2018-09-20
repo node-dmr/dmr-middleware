@@ -2,11 +2,12 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 22:24:46
+ * @Last Modified time: 2018-09-20 16:15:46
  */
 import {Copy, Deformat, Regexp, Split} from "./index";
 import {Gather, Middleware, Noop} from "./index";
-import {CopyOptions, DeformatOptions, DividerOptions, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
+import {CopyOptions, DeformatOptions, DividerOptions,
+  Json, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
 
 export function MiddlewareFactory(options:
   MiddlewareOptions |
@@ -23,6 +24,8 @@ export function MiddlewareFactory(options:
       return new Deformat(options as DeformatOptions);
     case "gather":
       return new Gather(options);
+    case "json":
+      return new Json(options);
     case "regexp":
       return new Regexp(options as RegexpOptions);
     case "split":
