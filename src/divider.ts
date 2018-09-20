@@ -2,56 +2,56 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 16:46:26
+ * @Last Modified time: 2018-09-21 00:12:42
  */
-import {MiddlewareFactory as factory} from "./factory";
-import {GatherCallback, Middleware, MiddlewareAction, MiddlewareOptions, Result} from "./middleware";
+import {Gather, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
 import ResultsHandler from "./results-handler";
 // import {PairOptions} from "./pair";
 
 export abstract class Divider extends Middleware {
   protected handlers: ResultsHandler[] = [];
-  constructor(options: DividerOptions = {}) {
+  constructor(options: MiddlewareOptions = {}) {
     super(options);
 
-    // next: {"key": MO, "key": M}
-    if (options.nextIndex) {this.nextIndex(options.nextIndex); }
-    // nextEach: MO
-    if (options.nextEach) {this.nextEach(options.nextEach); }
-    // nextList: [MO, MO, MO]
-    if (options.nextList) {this.nextList(options.nextList); }
+    // // next: {"key": MO, "key": M}
+    // if (options.nextIndex) {this.nextIndex(options.nextIndex); }
+    // // nextEach: MO
+    // if (options.nextEach) {this.nextEach(options.nextEach); }
+    // // nextList: [MO, MO, MO]
+    // if (options.nextList) {this.nextList(options.nextList); }
 
-    if (options.next) {this.next(options.next); }
-    // this.parseNextHandler(options);
+    // if (options.next) {this.next(options.next); }
   }
 
   // nextList 重载实现
-  public nextList(list: MiddlewareOptions[] | Middleware[]) {
+  public nextList(list: Middleware[]): Divider {
     for (let index = 0; index < list.length ; index++) {
       const M = list[index];
-      const m: Middleware = M instanceof Middleware ? M : factory(M);
-      this.handlers.push(new ResultsHandler(m, index.toString()));
+      this.handlers.push(new ResultsHandler(M, index.toString()));
     }
+    return this;
   }
   // nextEach 重载实现
-  public nextEach(M: MiddlewareOptions | Middleware) {
-    const m: Middleware = M instanceof Middleware ? M : factory(M);
+  public nextEach(m: Middleware): Divider {
     this.handlers.push(new ResultsHandler(m));
+    return this;
   }
   // next 重载实现
-  public nextIndex(action: MiddlewareAction) {
+  public nextIndex(action: Middleware[] | {[key: string]: Middleware}): Divider {
     Object.keys(action).forEach((index) => {
-      const M = action[index];
-      const m: Middleware = M instanceof Middleware ? M : factory(M);
+      const m = action[index];
       this.handlers.push(new ResultsHandler(m, index.toString()));
     });
+    return this;
   }
 
-  public next(options: MiddlewareOptions | Middleware | string) {
-    if (options === "gather") {
-      options = factory({require: "gather"});
+  public next(options: Middleware | typeof Gather): Divider {
+    if (options instanceof Middleware) {
+      this.nextEach(options as Middleware);
+    } else {
+      this.nextEach(new options());
     }
-    this.nextEach(options as MiddlewareOptions | Middleware);
+    return this;
   }
 
   protected _handle(result: Result, gather: GatherCallback) {
@@ -62,11 +62,4 @@ export abstract class Divider extends Middleware {
   }
 
   protected abstract divide(result: Result): Result[];
-}
-
-export interface DividerOptions extends MiddlewareOptions {
-  nextList?: MiddlewareOptions[];
-  nextEach?: MiddlewareOptions;
-  nextIndex?: MiddlewareAction;
-  next?: MiddlewareAction | string;
 }

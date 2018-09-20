@@ -2,13 +2,13 @@
  * @Author: qiansc
  * @Date: 2018-09-19 18:17:48
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 16:49:47
+ * @Last Modified time: 2018-09-20 20:07:13
  */
-import {Divider, DividerOptions} from "../divider";
-import {Result} from "../middleware";
+import {Divider} from "../divider";
+import {MiddlewareOptions, Result} from "../middleware";
 
 export class Json extends Divider {
-  constructor(options: DividerOptions = {}) {
+  constructor(options: MiddlewareOptions = {}) {
     super(options);
   }
   protected divide(result: Result): Result[] {

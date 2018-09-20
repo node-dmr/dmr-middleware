@@ -2,10 +2,10 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:05:24
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 23:03:55
+ * @Last Modified time: 2018-09-20 20:07:32
  */
-import {Divider, DividerOptions} from "../divider";
-import {Result} from "../middleware";
+import {Divider} from "../divider";
+import {MiddlewareOptions, Result} from "../middleware";
 
 export class Regexp extends Divider {
   private partten: RegExp;
@@ -35,6 +35,6 @@ export class Regexp extends Divider {
   }
 }
 
-export interface RegexpOptions extends DividerOptions {
+export interface RegexpOptions extends MiddlewareOptions {
   partten: string | RegExp;
 }

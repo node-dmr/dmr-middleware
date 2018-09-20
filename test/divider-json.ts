@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-20 16:13:50
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 16:57:31
+ * @Last Modified time: 2018-09-21 00:17:03
  */
 import {expect} from "chai";
 import {Gather, Json, MiddlewareFactory as factory, Result} from "../src/index";
@@ -12,7 +12,7 @@ describe("Divider.JSON Test", () => {
   it ("Divider.Json easy New", () => {
     const txt = "{A: \'a\',\"B\":1,\"C\":\"20180909\"}";
     const json = new Json({});
-    json.next("gather");
+    json.next(Gather);
     const rs: Result[] = [];
     console.log("JSON String : ", txt);
     json.handle(["json", txt], (result) => {
@@ -75,9 +75,7 @@ describe("Divider.JSON Test", () => {
     const json = new Json();
     json.nextIndex({
       A: new Gather(),
-      C: new Json({
-        next: "gather",
-      }),
+      C: new Json().next(Gather),
     });
     const rs: Result[] = [];
     console.log("JSON String : ", txt);

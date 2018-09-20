@@ -922,6 +922,9 @@ img { max-width: 100%; }
 			<a href="classes/gather.html" class="tsd-kind-icon">Gather</a>
 		</li>
 		<li class=" tsd-kind-class">
+			<a href="classes/json.html" class="tsd-kind-icon">Json</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="classes/middleware.html" class="tsd-kind-icon">Middleware</a>
 		</li>
 		<li class=" tsd-kind-class">
@@ -943,7 +946,7 @@ img { max-width: 100%; }
 			<a href="interfaces/deformatoptions.html" class="tsd-kind-icon">Deformat<wbr>Options</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="interfaces/middlewareaction.html" class="tsd-kind-icon">Middleware<wbr>Action</a>
+			<a href="interfaces/middlewareconfig.html" class="tsd-kind-icon">Middleware<wbr>Config</a>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/middlewareoptions.html" class="tsd-kind-icon">Middleware<wbr>Options</a>
@@ -960,8 +963,17 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-type-alias">
 			<a href="globals.html#result" class="tsd-kind-icon">Result</a>
 		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="globals.html#middlewareconfigindexs" class="tsd-kind-icon">Middleware<wbr>Config<wbr>Indexs</a>
+		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="globals.html#configtooption" class="tsd-kind-icon">config<wbr>ToOption</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="globals.html#isjson" class="tsd-kind-icon">isJSON</a>
 		</li>
 	</ul>
 </nav>
@@ -988,6 +1000,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-class"><a href="classes/deformat.html" class="tsd-kind-icon">Deformat</a></li>
 							<li class="tsd-kind-class"><a href="classes/divider.html" class="tsd-kind-icon">Divider</a></li>
 							<li class="tsd-kind-class"><a href="classes/gather.html" class="tsd-kind-icon">Gather</a></li>
+							<li class="tsd-kind-class"><a href="classes/json.html" class="tsd-kind-icon">Json</a></li>
 							<li class="tsd-kind-class"><a href="classes/middleware.html" class="tsd-kind-icon">Middleware</a></li>
 							<li class="tsd-kind-class"><a href="classes/noop.html" class="tsd-kind-icon">Noop</a></li>
 							<li class="tsd-kind-class"><a href="classes/regexp.html" class="tsd-kind-icon">Regexp</a></li>
@@ -1000,7 +1013,7 @@ img { max-width: 100%; }
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-interface"><a href="interfaces/copyoptions.html" class="tsd-kind-icon">Copy<wbr>Options</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/deformatoptions.html" class="tsd-kind-icon">Deformat<wbr>Options</a></li>
-							<li class="tsd-kind-interface"><a href="interfaces/middlewareaction.html" class="tsd-kind-icon">Middleware<wbr>Action</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/middlewareconfig.html" class="tsd-kind-icon">Middleware<wbr>Config</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/middlewareoptions.html" class="tsd-kind-icon">Middleware<wbr>Options</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/regexpoptions.html" class="tsd-kind-icon">Regexp<wbr>Options</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/splitoptions.html" class="tsd-kind-icon">Split<wbr>Options</a></li>
@@ -1013,10 +1026,18 @@ img { max-width: 100%; }
 							<li class="tsd-kind-type-alias"><a href="globals.html#result" class="tsd-kind-icon">Result</a></li>
 						</ul>
 					</section>
+					<section class="tsd-index-section tsd-is-not-exported">
+						<h3>Variables</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#middlewareconfigindexs" class="tsd-kind-icon">Middleware<wbr>Config<wbr>Indexs</a></li>
+						</ul>
+					</section>
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-function"><a href="globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a></li>
+							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#configtooption" class="tsd-kind-icon">config<wbr>ToOption</a></li>
+							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#isjson" class="tsd-kind-icon">isJSON</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1030,7 +1051,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Gather<wbr>Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/fed27a7/src/middleware.ts#L29">middleware.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/middleware.ts#L22">middleware.ts:22</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -1061,7 +1082,20 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/fed27a7/src/middleware.ts#L25">middleware.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/middleware.ts#L21">middleware.ts:21</a></li>
+					</ul>
+				</aside>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<h2>Variables</h2>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+				<a name="middlewareconfigindexs" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> Middleware<wbr>Config<wbr>Indexs</h3>
+				<div class="tsd-signature tsd-kind-icon">Middleware<wbr>Config<wbr>Indexs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;require&quot;, &quot;next&quot;, &quot;nextEach&quot;, &quot;nextList&quot;, &quot;nextIndex&quot;]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/factory.ts#L18">factory.ts:18</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1072,22 +1106,68 @@ img { max-width: 100%; }
 				<a name="middlewarefactory" class="tsd-anchor"></a>
 				<h3>Middleware<wbr>Factory</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">Middleware<wbr>Factory<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="interfaces/middlewareoptions.html" class="tsd-signature-type">MiddlewareOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/deformatoptions.html" class="tsd-signature-type">DeformatOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/copyoptions.html" class="tsd-signature-type">CopyOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/regexpoptions.html" class="tsd-signature-type">RegexpOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/splitoptions.html" class="tsd-signature-type">SplitOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/middleware.html" class="tsd-signature-type">Middleware</a></li>
+					<li class="tsd-signature tsd-kind-icon">Middleware<wbr>Factory<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="interfaces/middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/middleware.html" class="tsd-signature-type">Middleware</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/fed27a7/src/factory.ts#L11">factory.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/factory.ts#L20">factory.ts:20</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>options: <a href="interfaces/middlewareoptions.html" class="tsd-signature-type">MiddlewareOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/deformatoptions.html" class="tsd-signature-type">DeformatOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/copyoptions.html" class="tsd-signature-type">CopyOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/regexpoptions.html" class="tsd-signature-type">RegexpOptions</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/splitoptions.html" class="tsd-signature-type">SplitOptions</a></h5>
+								<h5>config: <a href="interfaces/middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="classes/middleware.html" class="tsd-signature-type">Middleware</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+				<a name="configtooption" class="tsd-anchor"></a>
+				<h3>config<wbr>ToOption</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">config<wbr>ToOption<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="interfaces/middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/middlewareoptions.html" class="tsd-signature-type">MiddlewareOptions</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/factory.ts#L75">factory.ts:75</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>config: <a href="interfaces/middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/middlewareoptions.html" class="tsd-signature-type">MiddlewareOptions</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+				<a name="isjson" class="tsd-anchor"></a>
+				<h3>isJSON</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">isJSON<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/81d244c/src/divider/json.ts#L31">divider/json.ts:31</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>obj: <span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 					</li>
 				</ul>
 			</section>

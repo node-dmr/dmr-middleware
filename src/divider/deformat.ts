@@ -2,11 +2,11 @@
  * @Author: qiansc
  * @Date: 2018-06-10 13:59:35
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-07-18 10:43:15
+ * @Last Modified time: 2018-09-20 20:06:58
  */
 import deformat = require("deformat");
-import {Divider, DividerOptions} from "../divider";
-import {Result} from "../middleware";
+import {Divider} from "../divider";
+import {MiddlewareOptions, Result} from "../middleware";
 export class Deformat extends Divider {
   private handdler: any;
   constructor(options: DeformatOptions) {
@@ -23,6 +23,6 @@ export class Deformat extends Divider {
     return results;
   }
 }
-export interface DeformatOptions extends DividerOptions {
+export interface DeformatOptions extends MiddlewareOptions {
   combined: string;
 }

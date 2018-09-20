@@ -2,11 +2,12 @@
  * @Author: qiansc
  * @Date: 2018-09-18 00:29:31
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 10:39:18
+ * @Last Modified time: 2018-09-21 00:14:07
  */
-import {GatherCallback, Middleware, MiddlewareOptions, Result} from "./middleware";
+import { Gather } from "../gather";
+import {GatherCallback, MiddlewareOptions, Result} from "../middleware";
 
-export class Noop extends Middleware {
+export class Noop extends Gather {
   constructor(options: MiddlewareOptions = {}) {
     super(options);
   }

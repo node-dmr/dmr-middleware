@@ -2,10 +2,10 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:31:04
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 23:17:01
+ * @Last Modified time: 2018-09-21 00:02:54
  */
 import {expect} from "chai";
-import {MiddlewareFactory as factory, Regexp} from "../src/index";
+import {Gather, MiddlewareFactory as factory, Regexp} from "../src/index";
 
 describe("Divider.Regexp Test", () => {
 
@@ -39,8 +39,8 @@ describe("Divider.Regexp Test", () => {
       /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?)?(?:#(.*))?$/,
     });
     regexp.nextIndex({
-      1: {require: "gather"},
-      3: {require: "gather"},
+      1: new Gather(),
+      3: new Gather(),
     });
 
     let times = 0;
@@ -62,7 +62,7 @@ describe("Divider.Regexp Test", () => {
     const regexp = new Regexp({
       partten: /^http:\/\/(.*)%/,
     });
-    regexp.nextEach({require: "gather"});
+    regexp.nextEach(new Gather());
 
     let times = 0;
     regexp.handle(["url", url], (result) => {
@@ -79,7 +79,7 @@ describe("Divider.Regexp Test", () => {
     const regexp = new Regexp({
       partten: "/ssss??",
     });
-    regexp.nextEach({require: "gather"});
+    regexp.nextEach(new Gather());
 
     let times = 0;
     regexp.handle(["url", url], (result) => {

@@ -2,10 +2,10 @@
  * @Author: qiansc
  * @Date: 2018-09-18 20:54:14
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 21:24:22
+ * @Last Modified time: 2018-09-20 20:07:43
  */
-import {Divider, DividerOptions} from "../divider";
-import {Result} from "../middleware";
+import {Divider} from "../divider";
+import {MiddlewareOptions, Result} from "../index";
 
 export class Split extends Divider {
   constructor(options: SplitOptions) {
@@ -21,6 +21,6 @@ export class Split extends Divider {
   }
 }
 
-export interface SplitOptions extends DividerOptions {
+export interface SplitOptions extends MiddlewareOptions {
   separater: string;
 }

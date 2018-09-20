@@ -1,10 +1,10 @@
-import { Noop } from "./noop";
+import { Noop } from "./gather/noop";
 
 /*
  * @Author: qiansc
  * @Date: 2018-09-16 21:09:18
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 16:14:45
+ * @Last Modified time: 2018-09-20 23:58:39
  */
 
 // Abstract Class
@@ -18,8 +18,8 @@ export * from "./divider/split";
 export * from "./divider/regexp";
 export * from "./divider/json";
 
-// Others
-export {Noop} from "./noop";
+// Gather
+export {Noop} from "./gather/noop";
 export {Gather} from "./gather";
 
  // Factory

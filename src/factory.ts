@@ -2,35 +2,84 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 16:15:46
+ * @Last Modified time: 2018-09-21 00:29:18
  */
 import {Copy, Deformat, Regexp, Split} from "./index";
-import {Gather, Middleware, Noop} from "./index";
-import {CopyOptions, DeformatOptions, DividerOptions,
-  Json, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
+import {Divider, Gather, Middleware, Noop} from "./index";
+import {CopyOptions, DeformatOptions, Json, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
 
-export function MiddlewareFactory(options:
-  MiddlewareOptions |
-  DeformatOptions |
-  CopyOptions |
-  RegexpOptions |
-  SplitOptions |
-  DividerOptions): Middleware {
+export interface MiddlewareConfig extends MiddlewareOptions {
+  require: string;
+  next?: MiddlewareConfig | string;
+  nextEach?: MiddlewareConfig;
+  nextList?: MiddlewareConfig[];
+  nextIndex?: Array<[string, MiddlewareConfig]> | {[key: string]: MiddlewareConfig};
+}
+const MiddlewareConfigIndexs = ["require", "next", "nextEach", "nextList", "nextIndex"];
 
-  switch (options.require) {
+export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
+  const options: MiddlewareOptions = configToOption(config);
+  let middleware: Middleware;
+  switch (config.require) {
     case "copy":
-      return new Copy(options as CopyOptions);
+      middleware = new Copy(options as CopyOptions); break;
     case "deformat":
-      return new Deformat(options as DeformatOptions);
+      middleware = new Deformat(options as DeformatOptions); break;
     case "gather":
-      return new Gather(options);
+      middleware = new Gather(options); break;
     case "json":
-      return new Json(options);
+      middleware = new Json(options); break;
     case "regexp":
-      return new Regexp(options as RegexpOptions);
+      middleware = new Regexp(options as RegexpOptions); break;
     case "split":
-      return new Split(options as SplitOptions);
+      middleware = new Split(options as SplitOptions); break;
+    default:
+      middleware = new Noop(config);
   }
 
-  return new Noop(options);
+  if (middleware instanceof Divider) {
+    if (config.nextIndex) {
+      const nexts = config.nextIndex;
+      const action = {};
+      Object.keys(nexts).forEach((index) => {
+        // if (nexts.hasOwnProperty(index)) {
+          action[index] =  MiddlewareFactory(nexts[index]);
+        // }
+      });
+      middleware.nextIndex(action);
+    }
+
+    if (config.nextEach) {
+      middleware.nextEach(MiddlewareFactory(config.nextEach));
+    }
+
+    if (config.nextList) {
+      const middlewares: Middleware[] = [];
+      for (const conf of config.nextList) {
+        middlewares.push(MiddlewareFactory(conf));
+      }
+      middleware.nextList(middlewares);
+    }
+
+    if (config.next) {
+      if (typeof config.next === "string") {
+        middleware.next(MiddlewareFactory({require: config.next as string}));
+      } else {
+        middleware.next(MiddlewareFactory(config.next as MiddlewareConfig));
+      }
+    }
+  }
+  return middleware;
+}
+
+function configToOption(config: MiddlewareConfig): MiddlewareOptions {
+  const options: MiddlewareOptions = {};
+  for (const index in config) {
+    if (MiddlewareConfigIndexs.indexOf(index) > -1) {
+      // do nothing
+    } else {
+      options[index] = config[index];
+    }
+  }
+  return options;
 }

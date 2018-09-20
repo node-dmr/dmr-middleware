@@ -2,28 +2,21 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:31:04
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 22:33:24
+ * @Last Modified time: 2018-09-21 00:20:08
  */
 import {expect} from "chai";
-import {MiddlewareFactory as factory, Split} from "../src/index";
+import {Gather, MiddlewareFactory as factory, Noop, Split} from "../src/index";
 
 describe("Divider.Split Test : Should gather C && A", () => {
 
   it ("Divider.Split", () => {
     const spliter = new Split({
-      nextIndex: {
-        2: {
-          require: "gather",
-        },
-        3: {
-          require: "noop",
-        },
-      },
-      nextList: [{
-        require: "gather",
-      }],
       separater: "|",
     });
+    spliter.nextIndex({
+      2: new Gather(),
+      3: new Noop(),
+    }).nextList([new Gather()]);
     // should gather 66 && Undefined && 88
     let sum = 0;
     spliter.handle(["key", "88|77|66|55"], (result) => {
