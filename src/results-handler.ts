@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-18 01:12:09
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-18 11:09:42
+ * @Last Modified time: 2018-09-23 19:16:49
  */
 import {GatherCallback, Result} from "./index";
 import {Middleware} from "./middleware";

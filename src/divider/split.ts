@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-18 20:54:14
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 20:07:43
+ * @Last Modified time: 2018-09-23 19:17:19
  */
 import {Divider} from "../divider";
 import {MiddlewareOptions, Result} from "../index";

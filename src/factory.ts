@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-22 22:07:16
+ * @Last Modified time: 2018-09-23 19:16:41
  */
 import {Copy, Deformat, Regexp, Series, Split} from "./index";
 import {Divider, Gather, Middleware, Noop} from "./index";

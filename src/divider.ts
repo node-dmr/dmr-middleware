@@ -2,14 +2,16 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-21 00:12:42
+ * @Last Modified time: 2018-09-23 21:42:33
  */
-import {Gather, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
+import {Filter, Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
 import ResultsHandler from "./results-handler";
 // import {PairOptions} from "./pair";
 
 export abstract class Divider extends Middleware {
-  protected handlers: ResultsHandler[] = [];
+  private handlers: ResultsHandler[] = [];
+  private beforeFilter: Filter;
+  private afterFilter: Filter;
   constructor(options: MiddlewareOptions = {}) {
     super(options);
 
@@ -45,7 +47,7 @@ export abstract class Divider extends Middleware {
     return this;
   }
 
-  public next(options: Middleware | typeof Gather): Divider {
+  public next(options: Middleware | typeof Finisher): Divider {
     if (options instanceof Middleware) {
       this.nextEach(options as Middleware);
     } else {
@@ -54,12 +56,50 @@ export abstract class Divider extends Middleware {
     return this;
   }
 
-  protected _handle(result: Result, gather: GatherCallback) {
-    const parts = this.divide(result);
-    this.handlers.forEach((handler) => {
-        handler.handle(parts, gather);
-    });
+  public before(f: Filter) {
+    this.beforeFilter = f;
   }
 
-  protected abstract divide(result: Result): Result[];
+  public after(f: Filter) {
+    this.afterFilter = f;
+  }
+
+  protected _handle(result: Result, gather: GatherCallback) {
+    this.dealBefore(result, (bfResult: Result) => {
+      const parts = this.divide(bfResult);
+      this.dealAfter(parts, (afResults) => {
+        this.handlers.forEach((handler) => {
+            handler.handle(afResults, gather);
+        });
+      });
+    });
+
+  }
+  protected abstract divide(results: Result): Result[];
+
+  private dealBefore(result: Result, cb: (bfResult: Result) => void) {
+    if (this.beforeFilter) {
+      this.beforeFilter.handle(result, (rs: Result) => {
+        cb(rs);
+      });
+    } else {
+      cb(result);
+    }
+  }
+
+  private dealAfter(results: Result[], cb: (afResults: Result[]) => void) {
+    console.log(2, this.afterFilter);
+    if (this.afterFilter) {
+      const afResults: Result[] = [];
+      results.forEach((result) => {
+        this.afterFilter.handle(result, (rs: Result) => {
+          afResults.push(rs);
+        });
+      });
+      cb (afResults);
+    } else {
+      cb(results);
+    }
+  }
+
 }
