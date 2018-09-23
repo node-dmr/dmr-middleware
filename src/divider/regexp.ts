@@ -2,13 +2,13 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:05:24
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-20 20:07:32
+ * @Last Modified time: 2018-09-22 22:27:00
  */
 import {Divider} from "../divider";
 import {MiddlewareOptions, Result} from "../middleware";
 
 export class Regexp extends Divider {
-  private partten: RegExp;
+  protected partten: RegExp;
   constructor(options: RegexpOptions) {
     super(options);
     if (options.partten instanceof RegExp) {

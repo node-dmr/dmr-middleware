@@ -2,11 +2,12 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-21 00:29:18
+ * @Last Modified time: 2018-09-22 22:07:16
  */
-import {Copy, Deformat, Regexp, Split} from "./index";
+import {Copy, Deformat, Regexp, Series, Split} from "./index";
 import {Divider, Gather, Middleware, Noop} from "./index";
-import {CopyOptions, DeformatOptions, Json, MiddlewareOptions, RegexpOptions, SplitOptions} from "./index";
+import {CopyOptions, DeformatOptions, Json, MiddlewareOptions,
+  RegexpOptions, SeriesOptions, SplitOptions} from "./index";
 
 export interface MiddlewareConfig extends MiddlewareOptions {
   require: string;
@@ -31,6 +32,8 @@ export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
       middleware = new Json(options); break;
     case "regexp":
       middleware = new Regexp(options as RegexpOptions); break;
+    case "series":
+      middleware = new Series(options as SeriesOptions); break;
     case "split":
       middleware = new Split(options as SplitOptions); break;
     default:
