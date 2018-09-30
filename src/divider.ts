@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-23 21:42:33
+ * @Last Modified time: 2018-09-30 18:18:39
  */
 import {Filter, Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
 import ResultsHandler from "./results-handler";
@@ -58,10 +58,12 @@ export abstract class Divider extends Middleware {
 
   public before(f: Filter) {
     this.beforeFilter = f;
+    return this;
   }
 
   public after(f: Filter) {
     this.afterFilter = f;
+    return this;
   }
 
   protected _handle(result: Result, gather: GatherCallback) {
@@ -88,7 +90,6 @@ export abstract class Divider extends Middleware {
   }
 
   private dealAfter(results: Result[], cb: (afResults: Result[]) => void) {
-    console.log(2, this.afterFilter);
     if (this.afterFilter) {
       const afResults: Result[] = [];
       results.forEach((result) => {

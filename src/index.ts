@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:09:18
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-23 20:51:04
+ * @Last Modified time: 2018-09-30 13:01:44
  */
 
 // Abstract Class
@@ -24,6 +24,8 @@ export {Gather} from "./finisher/gather";
 
 // Filter
 export {Filter} from "./filter";
+export {Reverse} from "./filter/reverse";
+export * from "./filter/modify";
 
  // Factory
 export {MiddlewareFactory} from "./factory";

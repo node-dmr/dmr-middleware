@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-09-23 21:47:41
  */
 import {expect} from "chai";
-import {Filter, Gather, Result, Series} from "../src";
+import {Filter, Gather, MiddlewareFactory as factory,  Result, Reverse, Series} from "../src";
 
 describe("Filter Abstruct Test", () => {
   class F extends Filter {
@@ -49,6 +49,27 @@ describe("Filter Abstruct Test", () => {
     f.next(Gather);
     f.handle(["key", "value"], (result: Result) => {
       console.log(result);
+      expect(result[0]).to.be.eq("value");
+      expect(result[1]).to.be.eq("key");
+    });
+  });
+
+  it("Reverse Test", () => {
+    const r = new Reverse();
+    r.next(Gather);
+    r.handle(["key", "value"], (result: Result) => {
+      console.log(result);
+      expect(result[0]).to.be.eq("value");
+      expect(result[1]).to.be.eq("key");
+    });
+  });
+
+  it("Reverse Factory Test", () => {
+    const r = factory({
+      next: "gather",
+      require: "reverse",
+    });
+    r.handle(["key", "value"], (result: Result) => {
       expect(result[0]).to.be.eq("value");
       expect(result[1]).to.be.eq("key");
     });

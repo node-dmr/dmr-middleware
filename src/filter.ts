@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-23 21:42:06
+ * @Last Modified time: 2018-09-30 18:09:35
  */
 import {Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
 // import {PairOptions} from "./pair";
