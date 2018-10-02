@@ -2,11 +2,11 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-30 17:53:13
+ * @Last Modified time: 2018-10-02 08:19:14
  */
-import {Copy, Deformat, Filter, Json, Modify, Regexp, Reverse, Series, Split} from "./index";
+import {Condition, Copy, Deformat, Filter, Json, Modify, Regexp, Reverse, Series, Split} from "./index";
 import {Divider, Gather, Middleware, Noop} from "./index";
-import {CopyOptions, DeformatOptions, MiddlewareOptions, ModifyOptions,
+import {ConditionOptions, CopyOptions, DeformatOptions, MiddlewareOptions, ModifyOptions,
   RegexpOptions, SeriesOptions, SplitOptions} from "./index";
 
 export interface MiddlewareConfig extends MiddlewareOptions {
@@ -22,6 +22,8 @@ export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
   const options: MiddlewareOptions = configToOption(config);
   let middleware: Middleware;
   switch (config.require) {
+    case "condition":
+      middleware = new Condition(options as ConditionOptions); break;
     case "copy":
       middleware = new Copy(options as CopyOptions); break;
     case "deformat":

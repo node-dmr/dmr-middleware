@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-30 18:09:35
+ * @Last Modified time: 2018-10-01 17:53:44
  */
 import {Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
 // import {PairOptions} from "./pair";
@@ -24,12 +24,14 @@ export abstract class Filter extends Middleware {
 
   protected _handle(result: Result, gather: GatherCallback) {
     const rs = this.deal(result);
-    if (this.handler) {
-      this.handler.handle(rs, gather);
-    } else {
-      gather(rs);
+    if (rs) {
+      if (this.handler) {
+        this.handler.handle(rs, gather);
+      } else {
+        gather(rs);
+      }
     }
   }
 
-  protected abstract deal(result: Result): Result;
+  protected abstract deal(result: Result): Result | false;
 }
