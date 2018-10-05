@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-30 11:23:21
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-02 08:44:56
+ * @Last Modified time: 2018-10-05 17:27:53
  */
 import {expect} from "chai";
 import {Condition, MiddlewareFactory as factory, Result, Series} from "../src";
@@ -97,5 +97,31 @@ describe("Filter Condition", () => {
       }
     });
     expect(rs.length).to.be.eq(0);
+  });
+
+  it("Condition _ Test", () => {
+    const c = factory({
+      expr: "`${_.indexOf(['sum', 'count', 'avg'], $1) > -1}`",
+      require: "condition",
+    });
+    const rs: Result [] = [];
+    c.handle(["count", "119"], (result) => {
+      if (result) {
+        rs.push(result);
+      }
+    });
+    c.handle(["avg", "119"], (result) => {
+      if (result) {
+        rs.push(result);
+      }
+    });
+    c.handle(["speed", "119"], (result) => {
+      if (result) {
+        rs.push(result);
+      }
+    });
+    expect(rs.length).to.be.eq(2);
+    expect(rs[0][0]).to.be.eq("count");
+    expect(rs[1][0]).to.be.eq("avg");
   });
 });
