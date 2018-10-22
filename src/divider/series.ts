@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-22 17:52:09
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-30 18:02:35
+ * @Last Modified time: 2018-10-22 17:10:59
  */
 
 import {Result} from "../middleware";
@@ -12,12 +12,12 @@ export class Series extends Regexp {
   protected spartten: RegExp;
   protected index: ($: RegExpMatchArray) => string;
   protected value: ($: RegExpMatchArray) => string;
-  constructor(options: SeriesOption) {
-    super(options);
-    if (options.spartten instanceof RegExp) {
-      this.spartten = options.spartten;
-    } else if (options.spartten) {
-      const part = options.spartten.match(/^\/(.*)\/(\w)*$/);
+  constructor(option: SeriesOption) {
+    super(option);
+    if (option.spartten instanceof RegExp) {
+      this.spartten = option.spartten;
+    } else if (option.spartten) {
+      const part = option.spartten.match(/^\/(.*)\/(\w)*$/);
       if (part) {
         this.spartten = new RegExp(part[1]);
       }
@@ -25,11 +25,11 @@ export class Series extends Regexp {
       this.spartten = new RegExp(this.partten.source);
     }
 
-    if (options.index && options.index.match(/^`.*`$/)) {
-      this.index = eval.call (null, "($) => " + options. index);
+    if (option.index && option.index.match(/^`.*`$/)) {
+      this.index = eval.call (null, "($) => " + option. index);
     }
-    if (options.value && options.value.match(/^`.*`$/)) {
-      this.value = eval.call (null, "($) => " + options. value);
+    if (option.value && option.value.match(/^`.*`$/)) {
+      this.value = eval.call (null, "($) => " + option. value);
     }
   }
   protected divide(result: Result): Result[] {

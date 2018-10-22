@@ -1065,7 +1065,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="filter.html">Filter</a>.<a href="filter.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/filter/reverse.ts#L10">filter/reverse.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/filter/reverse.ts#L10">filter/reverse.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="reverse.html" class="tsd-signature-type">Reverse</a></h4>
@@ -1086,9 +1086,18 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="middleware.html">Middleware</a>.<a href="middleware.html#handle">handle</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/middleware.ts#L13">middleware.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/middleware.ts#L29">middleware.ts:29</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Handle is invoke method of Middleware.
+									Result is the data to be processed. GatherCallback is a callback for processing.
+								GatherCallback accepts Result | undefined.</p>
+							</div>
+							<p>handle是Middleware类被调用时使用的方法, Result为待处理数据,
+							GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined</p>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
@@ -1113,9 +1122,23 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="filter.html">Filter</a>.<a href="filter.html#next">next</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/filter.ts#L16">filter.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/filter.ts#L35">filter.ts:35</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The next method accepts a Middleware class or Finisher class type to specify the next step after data processing.</p>
+							</div>
+							<p>next方法接受一个Middleware类或Finisher类类型以指定数据处理后下一步操作</p>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-Typescript">
+deformat.nextEach(filterA);
+filterA.next(filterB);
+filterB.next(Gather);</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>

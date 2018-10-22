@@ -1008,6 +1008,17 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Finisher is the Middleware that handles the last call to the data, usually at the very end of the next operation.
+						Finisher&#39;s handle is very simple, usually do nothing (Noop class),
+					or call the GatherCallback (Gather class) that has been passed down, and pass in the processed data.</p>
+				</div>
+				<p>Finisher是处理数据最后调用的Middleware, 通常出现在next操作的最末端.
+				Finisher的handle很简单, 通常是什么都不做(Noop类), 或者调用一直传递下来的GatherCallback（Gather类）, 并传入处理好的数据.</p>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
@@ -1061,7 +1072,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="middleware.html">Middleware</a>.<a href="middleware.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/finisher.ts#L9">finisher.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/finisher.ts#L17">finisher.ts:17</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="finisher.html" class="tsd-signature-type">Finisher</a></h4>
@@ -1082,9 +1093,18 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="middleware.html">Middleware</a>.<a href="middleware.html#handle">handle</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/middleware.ts#L13">middleware.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/middleware.ts#L29">middleware.ts:29</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Handle is invoke method of Middleware.
+									Result is the data to be processed. GatherCallback is a callback for processing.
+								GatherCallback accepts Result | undefined.</p>
+							</div>
+							<p>handle是Middleware类被调用时使用的方法, Result为待处理数据,
+							GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined</p>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>

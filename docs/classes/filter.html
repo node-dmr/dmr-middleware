@@ -1011,6 +1011,17 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Filter is a Middleware that processes single Result.
+						Filter processing can be filtering, key-value conversion, calculation, deformation and other operations.
+					After processing, Filter call the next Middleware to continue.</p>
+				</div>
+				<p>Filter是加工单个Result的Middleware, 处理完后调用next预先指定的Middleware继续下一步处理.
+				Filter的处理的过程可以是过滤、键值转换、计算、变形等操作.</p>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-type-parameters">
 			<h3>Type parameters</h3>
 			<ul class="tsd-type-parameters">
@@ -1069,20 +1080,20 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Filter<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FilterOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="filter.html" class="tsd-signature-type">Filter</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Filter<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FilterOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="filter.html" class="tsd-signature-type">Filter</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="middleware.html">Middleware</a>.<a href="middleware.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/filter.ts#L11">filter.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/filter.ts#L19">filter.ts:19</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>options: <span class="tsd-signature-type">FilterOption</span></h5>
+								<h5>option: <span class="tsd-signature-type">FilterOption</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="filter.html" class="tsd-signature-type">Filter</a></h4>
@@ -1103,9 +1114,18 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="middleware.html">Middleware</a>.<a href="middleware.html#handle">handle</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/middleware.ts#L13">middleware.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/middleware.ts#L29">middleware.ts:29</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Handle is invoke method of Middleware.
+									Result is the data to be processed. GatherCallback is a callback for processing.
+								GatherCallback accepts Result | undefined.</p>
+							</div>
+							<p>handle是Middleware类被调用时使用的方法, Result为待处理数据,
+							GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined</p>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
@@ -1129,9 +1149,23 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/filter.ts#L16">filter.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/filter.ts#L35">filter.ts:35</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The next method accepts a Middleware class or Finisher class type to specify the next step after data processing.</p>
+							</div>
+							<p>next方法接受一个Middleware类或Finisher类类型以指定数据处理后下一步操作</p>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-Typescript">
+deformat.nextEach(filterA);
+filterA.next(filterB);
+filterB.next(Gather);</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>

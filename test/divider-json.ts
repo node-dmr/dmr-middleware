@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-20 16:13:50
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-21 00:17:03
+ * @Last Modified time: 2018-10-22 15:59:49
  */
 import {expect} from "chai";
 import {Gather, Json, MiddlewareFactory as factory, Result} from "../src/index";

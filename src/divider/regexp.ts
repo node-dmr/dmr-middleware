@@ -2,19 +2,19 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:05:24
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-22 22:27:00
+ * @Last Modified time: 2018-10-22 17:10:46
  */
 import {Divider} from "../divider";
 import {Result} from "../middleware";
 
 export class Regexp extends Divider<RegexpOption> {
   protected partten: RegExp;
-  constructor(options: RegexpOption) {
-    super(options);
-    if (options.partten instanceof RegExp) {
-      this.partten = options.partten;
+  constructor(option: RegexpOption) {
+    super(option);
+    if (option.partten instanceof RegExp) {
+      this.partten = option.partten;
     } else {
-      const part = options.partten.match(/^\/(.*)\/(\w)*$/);
+      const part = option.partten.match(/^\/(.*)\/(\w)*$/);
       if (part) {
         this.partten = new RegExp(part[1], part[2]);
       }

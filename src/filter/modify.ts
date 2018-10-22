@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-30 09:48:28
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-30 18:09:04
+ * @Last Modified time: 2018-10-22 17:11:09
  */
 import {Filter} from "../filter";
 import {Result} from "../middleware";
@@ -11,11 +11,11 @@ import expression from "../util/expression";
 export class Modify extends Filter<ModifyOption> {
   protected indexExp: (index: string, value: string) => string;
   protected valueExp: (value: string, index: string) => string;
-  constructor(options: ModifyOption) {
-    super(options);
+  constructor(option: ModifyOption) {
+    super(option);
     // $ - index  $1 - value
-    this.indexExp = expression(options.indexExpr, 2);
-    this.valueExp = expression(options.expr, 2);
+    this.indexExp = expression(option.indexExpr, 2);
+    this.valueExp = expression(option.expr, 2);
   }
   protected deal(result: Result): Result {
     return [
