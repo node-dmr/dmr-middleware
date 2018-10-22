@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-30 11:23:21
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-30 11:47:14
+ * @Last Modified time: 2018-10-11 17:19:31
  */
 import {expect} from "chai";
 import expression from "../src/util/expression";
@@ -27,8 +27,10 @@ describe("Expression Test", () => {
     const exp = expression("`N${123  + $2 + $3}`", 5);
     expect(exp(0, 1, 2, 3, 4)).to.be.eq("N128");
   });
+
   it("null expression" , () => {
     const exp = expression(undefined, 5);
     expect(exp(0, 1, 2, 3, 4)).to.be.eq("0");
   });
+
 });

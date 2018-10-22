@@ -9,6 +9,9 @@ import {Filter, Gather, MiddlewareFactory as factory,  Result, Reverse, Series} 
 
 describe("Filter Abstruct Test", () => {
   class F extends Filter {
+    constructor() {
+      super({});
+    }
     protected deal(result: Result): Result {
       return [result[1], result[0]];
     }

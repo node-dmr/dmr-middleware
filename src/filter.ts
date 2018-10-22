@@ -4,20 +4,20 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-10-01 17:53:44
  */
-import {Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
+import {Finisher, GatherCallback, Middleware, Result} from "./index";
 // import {PairOptions} from "./pair";
 
-export abstract class Filter extends Middleware {
-  protected handler: Middleware;
-  constructor(options: MiddlewareOptions = {}) {
+export abstract class Filter<FilterOption = {}> extends Middleware<FilterOption> {
+  protected handler: Middleware<any>;
+  constructor(options: FilterOption) {
     super(options);
   }
 
-  public next(m: Middleware | typeof Finisher): Filter {
+  public next(m: Middleware<any> | typeof Finisher): Filter<FilterOption> {
     if (m instanceof Middleware) {
       this.handler = m;
     } else {
-      this.handler = new m();
+      this.handler = new (m as typeof Finisher)() as Middleware<any>;
     }
     return this;
   }

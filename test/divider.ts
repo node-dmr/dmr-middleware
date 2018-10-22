@@ -10,6 +10,9 @@ import {Divider, Noop, Result} from "../src/index";
 describe("Abstract Divider Test", () => {
   it("Make Twice Divider", () => {
     class Twice extends Divider {
+      constructor() {
+        super({});
+      }
       protected divide(result: Result): Result[] {
         return [result, result];
       }

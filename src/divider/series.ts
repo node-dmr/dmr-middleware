@@ -6,13 +6,13 @@
  */
 
 import {Result} from "../middleware";
-import { Regexp , RegexpOptions} from "./regexp";
+import {Regexp, RegexpOption} from "./regexp";
 
 export class Series extends Regexp {
   protected spartten: RegExp;
   protected index: ($: RegExpMatchArray) => string;
   protected value: ($: RegExpMatchArray) => string;
-  constructor(options) {
+  constructor(options: SeriesOption) {
     super(options);
     if (options.spartten instanceof RegExp) {
       this.spartten = options.spartten;
@@ -59,9 +59,9 @@ export class Series extends Regexp {
   }
 }
 
-export interface SeriesOptions extends RegexpOptions {
+export interface SeriesOption extends RegexpOption {
   partten: string | RegExp;
-  spartten: string | RegExp;
+  spartten?: string | RegExp;
   index?: string;
   value?: string;
 }

@@ -10,7 +10,10 @@ import {GatherCallback, Middleware, Result} from "../src/index";
 
 describe("Abstrct Class Test", () => {
   it("Middleware", () => {
-    class M extends Middleware {
+    class M extends Middleware<any> {
+      constructor() {
+        super({});
+      }
       protected _handle(result: Result, gather: GatherCallback) {
         gather(result);
       }

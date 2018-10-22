@@ -1,3 +1,6 @@
+import { Divider } from "./divider";
+import { Series, SeriesOption } from "./divider/series";
+
 /*
  * @Author: qiansc
  * @Date: 2018-09-16 21:09:18

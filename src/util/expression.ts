@@ -28,7 +28,10 @@ export default function Expression(
   }
   return (...args) => func.call(null, _, ...args);
 }
-// $0 ~ $9  matches RegExp.$
+/**
+ * @hidden and @ignore
+ * $0 ~ $9  matches RegExp.$
+ */
 type exp = (
   $?: any,
   $1?: any,

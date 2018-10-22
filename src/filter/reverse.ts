@@ -8,6 +8,9 @@ import {Filter} from "../filter";
 import {Result} from "../middleware";
 
 export class Reverse extends Filter {
+  constructor() {
+    super({});
+  }
   protected deal(result: Result): Result {
     return [result[1], result[0]];
   }

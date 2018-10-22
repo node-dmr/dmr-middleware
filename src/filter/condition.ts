@@ -5,12 +5,12 @@
  * @Last Modified time: 2018-10-02 08:38:55
  */
 import {Filter} from "../filter";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Result} from "../middleware";
 import expression from "../util/expression";
 
-export class Condition extends Filter {
+export class Condition extends Filter<ConditionOption> {
   protected exp: (value: string, index: string) => string;
-  constructor(options: ConditionOptions) {
+  constructor(options: ConditionOption) {
     options.type = options.type ||  "white";
     super(options);
     // $ - index  $1 - value
@@ -38,7 +38,7 @@ export class Condition extends Filter {
   }
 }
 
-export interface ConditionOptions extends  MiddlewareOptions {
+export interface ConditionOption {
   expr: string | undefined;
   type?: string;
 }

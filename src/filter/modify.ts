@@ -5,13 +5,13 @@
  * @Last Modified time: 2018-09-30 18:09:04
  */
 import {Filter} from "../filter";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Result} from "../middleware";
 import expression from "../util/expression";
 
-export class Modify extends Filter {
+export class Modify extends Filter<ModifyOption> {
   protected indexExp: (index: string, value: string) => string;
   protected valueExp: (value: string, index: string) => string;
-  constructor(options: ModifyOptions) {
+  constructor(options: ModifyOption) {
     super(options);
     // $ - index  $1 - value
     this.indexExp = expression(options.indexExpr, 2);
@@ -25,7 +25,7 @@ export class Modify extends Filter {
   }
 }
 
-export interface ModifyOptions extends  MiddlewareOptions {
+export interface  ModifyOption {
   indexExpr?: string | undefined;
   expr?: string | undefined;
 }

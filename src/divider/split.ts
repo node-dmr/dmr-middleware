@@ -5,14 +5,14 @@
  * @Last Modified time: 2018-09-23 19:17:19
  */
 import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../index";
+import {Result} from "../index";
 
-export class Split extends Divider {
-  constructor(options: SplitOptions) {
+export class Split extends Divider<SplitOption> {
+  constructor(options: SplitOption) {
     super(options);
   }
   protected divide(result: Result): Result[] {
-    const parts = result[1].split((this.options as SplitOptions).separater);
+    const parts = result[1].split((this.options as SplitOption).separater);
     const results: Result[] = [];
     for (let index = 0; index < parts.length; index++) {
       results.push([index.toString(), parts[index]]);
@@ -21,6 +21,6 @@ export class Split extends Divider {
   }
 }
 
-export interface SplitOptions extends MiddlewareOptions {
+export interface SplitOption {
   separater: string;
 }

@@ -4,15 +4,15 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-09-30 18:18:39
  */
-import {Filter, Finisher, GatherCallback, Middleware, MiddlewareOptions, Result} from "./index";
+import {Filter, Finisher, GatherCallback, Middleware, Result} from "./index";
 import ResultsHandler from "./results-handler";
 // import {PairOptions} from "./pair";
 
-export abstract class Divider extends Middleware {
+export abstract class Divider<DividerOption = {}> extends Middleware<DividerOption> {
   private handlers: ResultsHandler[] = [];
-  private beforeFilter: Filter;
-  private afterFilter: Filter;
-  constructor(options: MiddlewareOptions = {}) {
+  private beforeFilter: Filter<any>;
+  private afterFilter: Filter<any>;
+  constructor(options: DividerOption) {
     super(options);
 
     // // next: {"key": MO, "key": M}
@@ -26,7 +26,7 @@ export abstract class Divider extends Middleware {
   }
 
   // nextList 重载实现
-  public nextList(list: Middleware[]): Divider {
+  public nextList(list: Array<Middleware<any>>): this {
     for (let index = 0; index < list.length ; index++) {
       const M = list[index];
       this.handlers.push(new ResultsHandler(M, index.toString()));
@@ -34,12 +34,12 @@ export abstract class Divider extends Middleware {
     return this;
   }
   // nextEach 重载实现
-  public nextEach(m: Middleware): Divider {
+  public nextEach(m: Middleware<any>): this {
     this.handlers.push(new ResultsHandler(m));
     return this;
   }
   // next 重载实现
-  public nextIndex(action: Middleware[] | {[key: string]: Middleware}): Divider {
+  public nextIndex(action: Array<Middleware<any>> | {[key: string]: Middleware<any>}): this {
     Object.keys(action).forEach((index) => {
       const m = action[index];
       this.handlers.push(new ResultsHandler(m, index.toString()));
@@ -47,21 +47,21 @@ export abstract class Divider extends Middleware {
     return this;
   }
 
-  public next(options: Middleware | typeof Finisher): Divider {
+  public next(options: Middleware<any> | typeof Finisher): this {
     if (options instanceof Middleware) {
-      this.nextEach(options as Middleware);
+      this.nextEach(options as Middleware<any>);
     } else {
       this.nextEach(new options());
     }
     return this;
   }
 
-  public before(f: Filter) {
+  public before(f: Filter<any>) {
     this.beforeFilter = f;
     return this;
   }
 
-  public after(f: Filter) {
+  public after(f: Filter<any>) {
     this.afterFilter = f;
     return this;
   }

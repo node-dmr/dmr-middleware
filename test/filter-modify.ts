@@ -92,6 +92,7 @@ describe("Filter Modify", () => {
     .next(new Modify({expr: "`${$.replace('s', '')}`"}));
 
     const rs: Result[] = [];
+
     s.handle(["url", "/s?doc=1200&load=1500&paint=2300"], (result) => {
       console.log(result);
       if (result) {

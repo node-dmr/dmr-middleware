@@ -6,11 +6,13 @@
  */
 import {GatherCallback, Result} from "./index";
 import {Middleware} from "./middleware";
-
+/**
+ * @hidden and @ignore
+ */
 export default class ResultsHandler {
   private index: string | undefined;
-  private middleware: Middleware;
-  constructor(middleware: Middleware , index?: string) {
+  private middleware: Middleware<any>;
+  constructor(middleware: Middleware<any> , index?: string) {
       this.index = index;
       this.middleware = middleware;
   }

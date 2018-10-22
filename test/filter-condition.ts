@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-30 11:23:21
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-05 17:27:53
+ * @Last Modified time: 2018-10-05 17:37:02
  */
 import {expect} from "chai";
 import {Condition, MiddlewareFactory as factory, Result, Series} from "../src";

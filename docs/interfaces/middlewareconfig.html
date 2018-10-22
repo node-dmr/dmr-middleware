@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MiddlewareConfig | DMR Pipeline</title>
+	<title>MiddlewareConfig | DMR Middleware</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">DMR Pipeline</a></strong>
+					<strong><a href="../index.html">DMR Middleware</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -910,22 +910,34 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-class">
+			<a href="../classes/condition.html" class="tsd-kind-icon">Condition</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="../classes/copy.html" class="tsd-kind-icon">Copy</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="../classes/deformat.html" class="tsd-kind-icon">Deformat</a>
 		</li>
-		<li class=" tsd-kind-class">
+		<li class=" tsd-kind-class tsd-has-type-parameter">
 			<a href="../classes/divider.html" class="tsd-kind-icon">Divider</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter">
+			<a href="../classes/filter.html" class="tsd-kind-icon">Filter</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="../classes/finisher.html" class="tsd-kind-icon">Finisher</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="../classes/gather.html" class="tsd-kind-icon">Gather</a>
 		</li>
-		<li class=" tsd-kind-class">
+		<li class=" tsd-kind-class tsd-has-type-parameter">
 			<a href="../classes/json.html" class="tsd-kind-icon">Json</a>
 		</li>
-		<li class=" tsd-kind-class">
+		<li class=" tsd-kind-class tsd-has-type-parameter">
 			<a href="../classes/middleware.html" class="tsd-kind-icon">Middleware</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="../classes/modify.html" class="tsd-kind-icon">Modify</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="../classes/noop.html" class="tsd-kind-icon">Noop</a>
@@ -933,8 +945,8 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-class">
 			<a href="../classes/regexp.html" class="tsd-kind-icon">Regexp</a>
 		</li>
-		<li class=" tsd-kind-class">
-			<a href="../classes/resultshandler.html" class="tsd-kind-icon">Results<wbr>Handler</a>
+		<li class=" tsd-kind-class tsd-has-type-parameter">
+			<a href="../classes/reverse.html" class="tsd-kind-icon">Reverse</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="../classes/series.html" class="tsd-kind-icon">Series</a>
@@ -943,14 +955,23 @@ img { max-width: 100%; }
 			<a href="../classes/split.html" class="tsd-kind-icon">Split</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="copyoptions.html" class="tsd-kind-icon">Copy<wbr>Options</a>
+			<a href="conditionoption.html" class="tsd-kind-icon">Condition<wbr>Option</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="deformatoptions.html" class="tsd-kind-icon">Deformat<wbr>Options</a>
+			<a href="copyoption.html" class="tsd-kind-icon">Copy<wbr>Option</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="deformatoption.html" class="tsd-kind-icon">Deformat<wbr>Option</a>
 		</li>
 		<li class="current tsd-kind-interface">
 			<a href="middlewareconfig.html" class="tsd-kind-icon">Middleware<wbr>Config</a>
 			<ul>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="middlewareconfig.html#after" class="tsd-kind-icon">after</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="middlewareconfig.html#before" class="tsd-kind-icon">before</a>
+				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="middlewareconfig.html#next" class="tsd-kind-icon">next</a>
 				</li>
@@ -969,16 +990,16 @@ img { max-width: 100%; }
 			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="middlewareoptions.html" class="tsd-kind-icon">Middleware<wbr>Options</a>
+			<a href="modifyoption.html" class="tsd-kind-icon">Modify<wbr>Option</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="regexpoptions.html" class="tsd-kind-icon">Regexp<wbr>Options</a>
+			<a href="regexpoption.html" class="tsd-kind-icon">Regexp<wbr>Option</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="seriesoptions.html" class="tsd-kind-icon">Series<wbr>Options</a>
+			<a href="seriesoption.html" class="tsd-kind-icon">Series<wbr>Option</a>
 		</li>
 		<li class=" tsd-kind-interface">
-			<a href="splitoptions.html" class="tsd-kind-icon">Split<wbr>Options</a>
+			<a href="splitoption.html" class="tsd-kind-icon">Split<wbr>Option</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#gathercallback" class="tsd-kind-icon">Gather<wbr>Callback</a>
@@ -990,10 +1011,10 @@ img { max-width: 100%; }
 			<a href="../globals.html#middlewareconfigindexs" class="tsd-kind-icon">Middleware<wbr>Config<wbr>Indexs</a>
 		</li>
 		<li class=" tsd-kind-function">
-			<a href="../globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
+			<a href="../globals.html#expression" class="tsd-kind-icon">Expression</a>
 		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="../globals.html#configtooption" class="tsd-kind-icon">config<wbr>ToOption</a>
+		<li class=" tsd-kind-function">
+			<a href="../globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
 		</li>
 		<li class=" tsd-kind-function tsd-is-not-exported">
 			<a href="../globals.html#isjson" class="tsd-kind-icon">isJSON</a>
@@ -1006,12 +1027,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<a href="middlewareoptions.html" class="tsd-signature-type">MiddlewareOptions</a>
-					<ul class="tsd-hierarchy">
-						<li>
-							<span class="target">MiddlewareConfig</span>
-						</li>
-					</ul>
+					<span class="target">MiddlewareConfig</span>
 				</li>
 			</ul>
 		</section>
@@ -1026,6 +1042,8 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="middlewareconfig.html#after" class="tsd-kind-icon">after</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="middlewareconfig.html#before" class="tsd-kind-icon">before</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="middlewareconfig.html#next" class="tsd-kind-icon">next</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="middlewareconfig.html#nexteach" class="tsd-kind-icon">next<wbr>Each</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="middlewareconfig.html#nextindex" class="tsd-kind-icon">next<wbr>Index</a></li>
@@ -1039,12 +1057,32 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="after" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> after</h3>
+				<div class="tsd-signature tsd-kind-icon">after<span class="tsd-signature-symbol">:</span> <a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L14">factory.ts:14</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="before" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> before</h3>
+				<div class="tsd-signature tsd-kind-icon">before<span class="tsd-signature-symbol">:</span> <a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L15">factory.ts:15</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="next" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> next</h3>
 				<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/7e6fb4a/src/factory.ts#L14">factory.ts:14</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L17">factory.ts:17</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1054,7 +1092,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">next<wbr>Each<span class="tsd-signature-symbol">:</span> <a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/7e6fb4a/src/factory.ts#L15">factory.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L18">factory.ts:18</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1064,7 +1102,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">next<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/7e6fb4a/src/factory.ts#L17">factory.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L20">factory.ts:20</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1074,7 +1112,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">next<wbr>List<span class="tsd-signature-symbol">:</span> <a href="middlewareconfig.html" class="tsd-signature-type">MiddlewareConfig</a><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/7e6fb4a/src/factory.ts#L16">factory.ts:16</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L19">factory.ts:19</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1084,7 +1122,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">require<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/7e6fb4a/src/factory.ts#L13">factory.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/c666cec/src/factory.ts#L16">factory.ts:16</a></li>
 					</ul>
 				</aside>
 			</section>

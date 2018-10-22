@@ -2,48 +2,49 @@
  * @Author: qiansc
  * @Date: 2018-09-16 21:51:07
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-02 08:19:14
+ * @Last Modified time: 2018-10-22 15:05:38
  */
 import {Condition, Copy, Deformat, Filter, Json, Modify, Regexp, Reverse, Series, Split} from "./index";
 import {Divider, Gather, Middleware, Noop} from "./index";
-import {ConditionOptions, CopyOptions, DeformatOptions, MiddlewareOptions, ModifyOptions,
-  RegexpOptions, SeriesOptions, SplitOptions} from "./index";
 
-export interface MiddlewareConfig extends MiddlewareOptions {
+export interface MiddlewareConfig {
+  [index: string]: any;
+  after?: MiddlewareConfig;
+  before?: MiddlewareConfig;
   require: string;
   next?: MiddlewareConfig | string;
   nextEach?: MiddlewareConfig;
   nextList?: MiddlewareConfig[];
   nextIndex?: Array<[string, MiddlewareConfig]> | {[key: string]: MiddlewareConfig};
 }
-const MiddlewareConfigIndexs = ["require", "next", "nextEach", "nextList", "nextIndex"];
+const MiddlewareConfigIndexs = ["require", "next", "nextEach", "nextList", "nextIndex", "before", "after"];
 
-export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
-  const options: MiddlewareOptions = configToOption(config);
-  let middleware: Middleware;
+export function MiddlewareFactory(config: MiddlewareConfig): Middleware<any> {
+  const option = configToOption(config);
+  let middleware: Middleware<any>;
   switch (config.require) {
     case "condition":
-      middleware = new Condition(options as ConditionOptions); break;
+      middleware = new Condition(option); break;
     case "copy":
-      middleware = new Copy(options as CopyOptions); break;
+      middleware = new Copy(option); break;
     case "deformat":
-      middleware = new Deformat(options as DeformatOptions); break;
+      middleware = new Deformat(option); break;
     case "gather":
-      middleware = new Gather(options); break;
+      middleware = new Gather(); break;
     case "json":
-      middleware = new Json(options); break;
+      middleware = new Json(); break;
     case "modify":
-      middleware = new Modify(options as ModifyOptions); break;
+      middleware = new Modify(option); break;
     case "regexp":
-      middleware = new Regexp(options as RegexpOptions); break;
+      middleware = new Regexp(option); break;
     case "reverse":
-      middleware = new Reverse(options); break;
+      middleware = new Reverse(); break;
     case "series":
-      middleware = new Series(options as SeriesOptions); break;
+      middleware = new Series(option); break;
     case "split":
-      middleware = new Split(options as SplitOptions); break;
+      middleware = new Split(option); break;
     default:
-      middleware = new Noop(config);
+      middleware = new Noop();
   }
 
   if (middleware instanceof Divider) {
@@ -63,7 +64,7 @@ export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
     }
 
     if (config.nextList) {
-      const middlewares: Middleware[] = [];
+      const middlewares: Array<Middleware<any>> = [];
       for (const conf of config.nextList) {
         middlewares.push(MiddlewareFactory(conf));
       }
@@ -79,24 +80,26 @@ export function MiddlewareFactory(config: MiddlewareConfig): Middleware {
     }
 
     if (config.before) {
-      middleware.before(MiddlewareFactory(config.before) as Filter);
+      middleware.before(MiddlewareFactory(config.before) as Filter<any>);
     }
 
     if (config.after) {
-      middleware.after(MiddlewareFactory(config.after) as Filter);
+      middleware.after(MiddlewareFactory(config.after) as Filter<any>);
     }
   }
   return middleware;
 }
-
-function configToOption(config: MiddlewareConfig): MiddlewareOptions {
-  const options: MiddlewareOptions = {};
+/**
+ * @hidden and @ignore
+ */
+function configToOption(config: MiddlewareConfig): any {
+  const option = {};
   for (const index in config) {
     if (MiddlewareConfigIndexs.indexOf(index) > -1) {
       // do nothing
     } else {
-      options[index] = config[index];
+      option[index] = config[index];
     }
   }
-  return options;
+  return option;
 }

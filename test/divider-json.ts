@@ -11,7 +11,7 @@ describe("Divider.JSON Test", () => {
 
   it ("Divider.Json easy New", () => {
     const txt = "{A: \'a\',\"B\":1,\"C\":\"20180909\"}";
-    const json = new Json({});
+    const json = new Json();
     json.next(Gather);
     const rs: Result[] = [];
     console.log("JSON String : ", txt);

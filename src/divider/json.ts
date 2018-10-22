@@ -5,11 +5,11 @@
  * @Last Modified time: 2018-09-20 20:07:13
  */
 import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Result} from "../middleware";
 
 export class Json extends Divider {
-  constructor(options: MiddlewareOptions = {}) {
-    super(options);
+  constructor() {
+    super({});
   }
   protected divide(result: Result): Result[] {
     let json = {};

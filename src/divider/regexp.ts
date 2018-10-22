@@ -5,11 +5,11 @@
  * @Last Modified time: 2018-09-22 22:27:00
  */
 import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../middleware";
+import {Result} from "../middleware";
 
-export class Regexp extends Divider {
+export class Regexp extends Divider<RegexpOption> {
   protected partten: RegExp;
-  constructor(options: RegexpOptions) {
+  constructor(options: RegexpOption) {
     super(options);
     if (options.partten instanceof RegExp) {
       this.partten = options.partten;
@@ -35,6 +35,6 @@ export class Regexp extends Divider {
   }
 }
 
-export interface RegexpOptions extends MiddlewareOptions {
+export interface RegexpOption {
   partten: string | RegExp;
 }

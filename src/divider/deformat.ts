@@ -6,12 +6,12 @@
  */
 import deformat = require("deformat");
 import {Divider} from "../divider";
-import {MiddlewareOptions, Result} from "../middleware";
-export class Deformat extends Divider {
+import {Result} from "../middleware";
+export class Deformat extends Divider<DeformatOption> {
   private handdler: any;
-  constructor(options: DeformatOptions) {
+  constructor(options: DeformatOption) {
     super(options);
-    this.handdler = deformat((this.options as DeformatOptions).combined);
+    this.handdler = deformat((this.options as DeformatOption).combined);
   }
   protected divide(result: Result): Result[] {
     const results: Result[] = [];
@@ -23,6 +23,6 @@ export class Deformat extends Divider {
     return results;
   }
 }
-export interface DeformatOptions extends MiddlewareOptions {
+export interface DeformatOption {
   combined: string;
 }
