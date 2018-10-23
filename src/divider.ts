@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-22 19:39:40
+ * @Last Modified time: 2018-10-23 10:42:26
  */
 import {Filter, Finisher, GatherCallback, Middleware, Result} from "./index";
 import ResultsHandler from "./results-handler";
@@ -65,12 +65,9 @@ export abstract class Divider<DividerOption = {}> extends Middleware<DividerOpti
    *
    * next方法同nextEach方法可以接受一个Middleware, 或者next可以接受Finisher类类型作为一种简写方式
    * @example
-   * ```Typescript
-   *
    *  // Gather extends Finisher
    *  divider.next(new Gather());
    *  divider.next(Gather);
-   * ```
    */
   public next(option: Middleware<any> | typeof Finisher) {
     if (option instanceof Middleware) {

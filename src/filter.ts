@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-22 19:58:00
+ * @Last Modified time: 2018-10-23 10:42:51
  */
 import {Finisher, GatherCallback, Middleware, Result} from "./index";
 // import {Pairoption} from "./pair";
@@ -25,12 +25,9 @@ export abstract class Filter<FilterOption = {}> extends Middleware<FilterOption>
    *
    * next方法接受一个Middleware类或Finisher类类型以指定数据处理后下一步操作
    * @example
-   * ```Typescript
-   *
    * deformat.nextEach(filterA);
    * filterA.next(filterB);
    * filterB.next(Gather);
-   * ```
    */
   public next(m: Middleware<any> | typeof Finisher): Filter<FilterOption> {
     if (m instanceof Middleware) {

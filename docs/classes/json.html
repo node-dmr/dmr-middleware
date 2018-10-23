@@ -1019,13 +1019,29 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-function">
 			<a href="../globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
 		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="../globals.html#isjson" class="tsd-kind-icon">isJSON</a>
-		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Json(extends Divider) can parse JsonString into pairs of [key, string].
+					Then each pair with be process by next Middleware</p>
+				</div>
+				<dl class="tsd-comment-tags">
+					<dt>example</dt>
+					<dd><pre><code class="language-Typescript">
+<span class="hljs-keyword">const</span> txt = <span class="hljs-string">"{A: \'a\',\"B\":1,\"C\":\"20180909\"}"</span>;
+<span class="hljs-keyword">const</span> json = <span class="hljs-keyword">new</span> Json().next(Gather);
+json.handle([<span class="hljs-string">"json"</span>, txt], <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+ <span class="hljs-built_in">console</span>.log(result);
+});
+<span class="hljs-comment">// ["A", "a"]   ["B", "1"]   ["C", "20180909"]</span></code></pre>
+					</dd>
+				</dl>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-type-parameters">
 			<h3>Type parameters</h3>
 			<ul class="tsd-type-parameters">
@@ -1085,7 +1101,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="divider.html">Divider</a>.<a href="divider.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider/json.ts#L10">divider/json.ts:10</a></li>
+								<li>Defined in divider/json.ts:25</li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="json.html" class="tsd-signature-type">Json</a></h4>
@@ -1106,7 +1122,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#after">after</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L97">divider.ts:97</a></li>
+								<li>Defined in divider.ts:98</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1136,7 +1152,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#before">before</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L88">divider.ts:88</a></li>
+								<li>Defined in divider.ts:89</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1166,7 +1182,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="middleware.html">Middleware</a>.<a href="middleware.html#handle">handle</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/middleware.ts#L29">middleware.ts:29</a></li>
+								<li>Defined in middleware.ts:29</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1202,7 +1218,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#next">next</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L75">divider.ts:75</a></li>
+								<li>Defined in divider.ts:76</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1241,7 +1257,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nexteach">nextEach</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L45">divider.ts:45</a></li>
+								<li>Defined in divider.ts:45</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1271,7 +1287,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nextindex">nextIndex</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L55">divider.ts:55</a></li>
+								<li>Defined in divider.ts:55</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1302,7 +1318,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nextlist">nextList</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/node-dmr/dmr-middleware/blob/73efce4/src/divider.ts#L32">divider.ts:32</a></li>
+								<li>Defined in divider.ts:32</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

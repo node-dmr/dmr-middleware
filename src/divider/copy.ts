@@ -2,20 +2,17 @@
  * @Author: qiansc
  * @Date: 2018-09-17 21:55:59
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-22 19:15:02
+ * @Last Modified time: 2018-10-23 10:42:35
  */
 import {Divider} from "../divider";
 import {Result} from "../middleware";
 /**
  * Copy extends Divider, can copy results
  * @example
- * ```Typescript
- *
  * const copy = new Copy({times: 3});
  * copy.next(Gather);
  * copy.handle(["key", "value"], (result) => console.log(result));
  * // ["key", "value"] * 3 times
- * ```
  */
 export class Copy extends Divider<CopyOption> {
   /**
