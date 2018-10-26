@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-17 21:55:59
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-23 10:42:35
+ * @Last Modified time: 2018-10-26 09:54:26
  */
 import {Divider, DividerOption} from "../divider";
 import {Result} from "../middleware";
@@ -30,7 +30,7 @@ export class Copy extends Divider<CopyOption> {
   }
 }
 
-export interface CopyOption extends DividerOption{
+export interface CopyOption extends DividerOption {
   /** Copy number */
   times: number;
 }
