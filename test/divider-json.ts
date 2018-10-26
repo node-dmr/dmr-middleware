@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-20 16:13:50
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-22 15:59:49
+ * @Last Modified time: 2018-10-25 20:50:36
  */
 import {expect} from "chai";
 import {Gather, Json, MiddlewareFactory as factory, Result} from "../src/index";
@@ -15,7 +15,7 @@ describe("Divider.JSON Test", () => {
     json.next(Gather);
     const rs: Result[] = [];
     console.log("JSON String : ", txt);
-    json.handle(["json", txt], (result) => {
+    json.handle(txt, (result) => {
       console.log(result);
       if (result) {
         rs.push(result);
@@ -37,16 +37,16 @@ describe("Divider.JSON Test", () => {
       },
     });
     const json = factory({
+      _: "Json",
       nextIndex: {
           B: {
-            require: "gather",
+            _: "Gather",
           },
           C: {
-            next: "gather",
-            require: "json",
+            _: "Json",
+            next: "Gather",
           },
         },
-      require: "json",
     });
     const rs: Result[] = [];
     console.log("JSON String : ", txt);

@@ -2,9 +2,9 @@
  * @Author: qiansc
  * @Date: 2018-09-19 18:17:48
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-23 10:42:44
+ * @Last Modified time: 2018-10-25 20:51:57
  */
-import {Divider} from "../divider";
+import {Divider, DividerOption} from "../divider";
 import {Result} from "../middleware";
 /**
  * Json(extends Divider) can parse JsonString into pairs of [key, string].
@@ -13,14 +13,14 @@ import {Result} from "../middleware";
  * @example
  * const txt = "{A: \'a\',\"B\":1,\"C\":\"20180909\"}";
  * const json = new Json().next(Gather);
- * json.handle(["json", txt], (result) => {
+ * json.handle(txt, (result) => {
  *  console.log(result);
  * });
  * // ["A", "a"]   ["B", "1"]   ["C", "20180909"]
  */
-export class Json extends Divider {
-  constructor() {
-    super({});
+export class Json extends Divider<DividerOption> {
+  constructor(option = {}) {
+    super(option);
   }
   protected divide(result: Result): Result[] {
     let json = {};
@@ -45,4 +45,8 @@ export class Json extends Divider {
 function isJSON(obj: any): boolean {
   return !!(typeof(obj) === "object" &&
   Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length);
+}
+
+export interface JsonOption extends DividerOption {
+
 }

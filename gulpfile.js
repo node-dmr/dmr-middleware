@@ -23,11 +23,11 @@ gulp.task("doc:ts", function() {
       .pipe(replace(/^[\s]*\*[\s]*\@example(?:(?!\*\/).|\n)*?^[\s]*\*\/$/mg, function(e){
         e = e.replace("@example", "@example\n * ```Typescript\n * ");
         e = e.substr(0, e.length-3) + " * ```\n" + " \*\/\n";
-        console.log(e);
         return e;
       }))
       .pipe(gulp.dest("src_doc"));
 });
+
 gulp.task("doc:type", function() {
   return gulp.src(["src_doc/**/*.ts"])
     .pipe(typedoc({

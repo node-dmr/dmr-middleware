@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:31:04
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-21 00:02:54
+ * @Last Modified time: 2018-10-26 09:42:37
  */
 import {expect} from "chai";
 import {Gather, MiddlewareFactory as factory, Regexp} from "../src/index";
@@ -12,11 +12,11 @@ describe("Divider.Regexp Test", () => {
   it ("Divider.Regexp Factory", () => {
     const  url = "https://github.com/node-dmr/dmr-middleware";
     const regexp = factory({
+      _: "Regexp",
       nextEach: {
-        require: "gather",
+        _: "Gather",
       },
-      partten: "/^(?:([A-Za-z]+):)?(\\/{0,3})([0-9.\\-A-Za-z]+)(?::(\\d+))?(?:\\/([^?#]*))?(?:\\?)?(?:#(.*))?$/",
-      require: "regexp",
+      regexp: "/^(?:([A-Za-z]+):)?(\\/{0,3})([0-9.\\-A-Za-z]+)(?::(\\d+))?(?:\\/([^?#]*))?(?:\\?)?(?:#(.*))?$/",
     });
     let times = 0;
     const rs: string[] = [];
@@ -35,7 +35,7 @@ describe("Divider.Regexp Test", () => {
   it ("Divider.Regexp Class", () => {
     const  url = "https://github.com/node-dmr/dmr-middleware";
     const regexp = new Regexp({
-      partten:
+      regexp:
       /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?)?(?:#(.*))?$/,
     });
     regexp.nextIndex({
@@ -60,7 +60,7 @@ describe("Divider.Regexp Test", () => {
   it ("Divider.Regexp Not Matched", () => {
     const  url = "git://aaa.com";
     const regexp = new Regexp({
-      partten: /^http:\/\/(.*)%/,
+      regexp: /^http:\/\/(.*)%/,
     });
     regexp.nextEach(new Gather());
 
@@ -77,7 +77,7 @@ describe("Divider.Regexp Test", () => {
   it ("Divider.Regexp Wrong Regexp", () => {
     const  url = "git://aaa.com";
     const regexp = new Regexp({
-      partten: "/ssss??",
+      regexp: "/ssss??",
     });
     regexp.nextEach(new Gather());
 

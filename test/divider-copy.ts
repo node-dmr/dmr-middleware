@@ -27,23 +27,23 @@ describe("Divider.Copy Test", () => {
 
   it("Copy by Config", () => {
     const copy = factory({
+      _: "Copy",
       // 3 time
       nextEach: {
-        require: "noop",
+        _: "Noop",
       },
       // 3 time
       nextIndex: {
         key0: {
-          require: "noop",
+          _: "Noop",
         },
       },
       // 0 time cause list deal with key = 0 1 2 3 but not "key0"
       nextList: [{
-        require: "noop",
+        _: "Noop",
       }, {
-        require: "noop",
+        _: "Noop",
       }],
-      require: "copy",
       times: 3,
     });
     let times = 0;
@@ -55,10 +55,10 @@ describe("Divider.Copy Test", () => {
 
   it("Copy && Gather 2", () => {
     const copy = factory({
+      _: "Copy",
       next: {
-        require: "gather",
+        _: "Gather",
       },
-      require: "copy",
       times: 2,
     });
     let times = 0;

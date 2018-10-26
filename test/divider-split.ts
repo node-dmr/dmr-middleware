@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-18 22:31:04
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-09-21 00:20:08
+ * @Last Modified time: 2018-10-25 20:42:02
  */
 import {expect} from "chai";
 import {Gather, MiddlewareFactory as factory, Noop, Split} from "../src/index";
@@ -30,10 +30,10 @@ describe("Divider.Split Test : Should gather C && A", () => {
 
   it ("Divider.Split Factory", () => {
     const spliter = factory({
+      _: "Split",
       nextEach: {
-        require: "gather",
+        _: "Gather",
       },
-      require: "split",
       separater: ",",
     });
     let sum = 0;

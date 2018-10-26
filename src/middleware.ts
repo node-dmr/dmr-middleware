@@ -23,11 +23,15 @@ export abstract class Middleware<MiddlewareOption> {
    * Result is the data to be processed. GatherCallback is a callback for processing.
    * GatherCallback accepts Result | undefined.
    *
-   * handle是Middleware类被调用时使用的方法, Result为待处理数据,
+   * handle是Middleware类被调用时使用的方法, result为待处理Result类型, 如果传入值为string类型, 会自动转为["undefined", string]
    * GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined
    */
-  public handle(result: Result, gather: GatherCallback) {
-    this._handle(result, gather);
+  public handle(result: Result | string, gather: GatherCallback) {
+    if (typeof result === "string") {
+      this._handle(["undefined", result], gather);
+    } else {
+      this._handle(result, gather);
+    }
   }
   protected abstract _handle(result: Result, gather: GatherCallback): void;
 }

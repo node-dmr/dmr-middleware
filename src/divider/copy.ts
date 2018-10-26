@@ -4,7 +4,7 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-10-23 10:42:35
  */
-import {Divider} from "../divider";
+import {Divider, DividerOption} from "../divider";
 import {Result} from "../middleware";
 /**
  * Copy extends Divider, can copy results
@@ -30,7 +30,7 @@ export class Copy extends Divider<CopyOption> {
   }
 }
 
-export interface CopyOption {
+export interface CopyOption extends DividerOption{
   /** Copy number */
   times: number;
 }

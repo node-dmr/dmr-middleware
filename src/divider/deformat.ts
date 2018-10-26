@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-10-23 10:42:39
  */
 import deformat = require("deformat");
-import {Divider} from "../divider";
+import {Divider, DividerOption} from "../divider";
 import {Result} from "../middleware";
 /**
  * Deformat(extends Divider) can split value to multiple parts, usually used when parsing logs.
@@ -19,7 +19,7 @@ import {Result} from "../middleware";
  * });
  * deformat.next(Gather);
  * let times = 0;
- * deformat.handle(["log", log], (result) => {
+ * deformat.handle(log, (result) => {
  *   console.log(result);
  * });
  * // 192.168.203.111
@@ -47,7 +47,7 @@ export class Deformat extends Divider<DeformatOption> {
   }
 }
 
-export interface DeformatOption {
+export interface DeformatOption extends DividerOption {
   /** deformat expression, api : https://www.npmjs.com/package/deformat */
   combined: string;
 }

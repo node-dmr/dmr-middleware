@@ -2,15 +2,15 @@
  * @Author: qiansc
  * @Date: 2018-09-30 11:23:21
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-05 17:37:02
+ * @Last Modified time: 2018-10-25 20:54:07
  */
 import {expect} from "chai";
-import {Condition, MiddlewareFactory as factory, Result, Series} from "../src";
+import {Condition, MiddlewareFactory as factory, Result} from "../src";
 
 describe("Filter Condition", () => {
   it("Condition White True", () => {
     const c = new Condition({
-      expr: "true",
+      fn: "true",
     });
     const rs: Result [] = [];
     c.handle(["count", "119"], (result) => {
@@ -23,7 +23,7 @@ describe("Filter Condition", () => {
 
   it("Condition White Expr === 119", () => {
     const c = new Condition({
-      expr: "`${$ * 1 === 119}`",
+      fn: (index, value) => (parseFloat(value) * 1 === 119),
       type: "white",
     });
     const rs: Result [] = [];
@@ -39,8 +39,8 @@ describe("Filter Condition", () => {
 
   it("Condition White Expr Factory === 200", () => {
     const c = factory({
-      expr: "`${$ * 1 === 200}`",
-      require: "condition",
+      _: "Condition",
+      fn: "value == 200",
     });
     const rs: Result [] = [];
     c.handle(["count", "119"], (result) => {
@@ -53,8 +53,8 @@ describe("Filter Condition", () => {
 
   it("Condition Black Expr === 119", () => {
     const c = factory({
-      expr: "`${$ * 1 === 119}`",
-      require: "condition",
+      _: "Condition",
+      fn: "value == 119",
       type: "black",
     });
     const rs: Result [] = [];
@@ -68,7 +68,7 @@ describe("Filter Condition", () => {
 
   it("Condition Black Expr Key === count", () => {
     const c = new Condition({
-      expr: "`${$1 !== 'count'}`",
+      fn: "index !== 'count'",
       type: "black",
     });
     const rs: Result [] = [];
@@ -88,8 +88,8 @@ describe("Filter Condition", () => {
 
   it("Condition Error: None Expr", () => {
     const c = factory({
-      require: "condition",
-    });
+      _: "Condition",
+    } as any);
     const rs: Result [] = [];
     c.handle(["count", "119"], (result) => {
       if (result) {
@@ -101,8 +101,8 @@ describe("Filter Condition", () => {
 
   it("Condition _ Test", () => {
     const c = factory({
-      expr: "`${_.indexOf(['sum', 'count', 'avg'], $1) > -1}`",
-      require: "condition",
+      _: "Condition",
+      fn: "_.indexOf(['sum', 'count', 'avg'], index) > -1",
     });
     const rs: Result [] = [];
     c.handle(["count", "119"], (result) => {

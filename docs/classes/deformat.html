@@ -909,12 +909,6 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class=" tsd-kind-class">
-			<a href="condition.html" class="tsd-kind-icon">Condition</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="copy.html" class="tsd-kind-icon">Copy</a>
-		</li>
 		<li class="current tsd-kind-class">
 			<a href="deformat.html" class="tsd-kind-icon">Deformat</a>
 			<ul>
@@ -944,81 +938,6 @@ img { max-width: 100%; }
 				</li>
 			</ul>
 		</li>
-		<li class=" tsd-kind-class tsd-has-type-parameter">
-			<a href="divider.html" class="tsd-kind-icon">Divider</a>
-		</li>
-		<li class=" tsd-kind-class tsd-has-type-parameter">
-			<a href="filter.html" class="tsd-kind-icon">Filter</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="finisher.html" class="tsd-kind-icon">Finisher</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="gather.html" class="tsd-kind-icon">Gather</a>
-		</li>
-		<li class=" tsd-kind-class tsd-has-type-parameter">
-			<a href="json.html" class="tsd-kind-icon">Json</a>
-		</li>
-		<li class=" tsd-kind-class tsd-has-type-parameter">
-			<a href="middleware.html" class="tsd-kind-icon">Middleware</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="modify.html" class="tsd-kind-icon">Modify</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="noop.html" class="tsd-kind-icon">Noop</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="regexp.html" class="tsd-kind-icon">Regexp</a>
-		</li>
-		<li class=" tsd-kind-class tsd-has-type-parameter">
-			<a href="reverse.html" class="tsd-kind-icon">Reverse</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="series.html" class="tsd-kind-icon">Series</a>
-		</li>
-		<li class=" tsd-kind-class">
-			<a href="split.html" class="tsd-kind-icon">Split</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/conditionoption.html" class="tsd-kind-icon">Condition<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/copyoption.html" class="tsd-kind-icon">Copy<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/deformatoption.html" class="tsd-kind-icon">Deformat<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/middlewareconfig.html" class="tsd-kind-icon">Middleware<wbr>Config</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/modifyoption.html" class="tsd-kind-icon">Modify<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/regexpoption.html" class="tsd-kind-icon">Regexp<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/seriesoption.html" class="tsd-kind-icon">Series<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-interface">
-			<a href="../interfaces/splitoption.html" class="tsd-kind-icon">Split<wbr>Option</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
-			<a href="../globals.html#gathercallback" class="tsd-kind-icon">Gather<wbr>Callback</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
-			<a href="../globals.html#result" class="tsd-kind-icon">Result</a>
-		</li>
-		<li class=" tsd-kind-variable tsd-is-not-exported">
-			<a href="../globals.html#middlewareconfigindexs" class="tsd-kind-icon">Middleware<wbr>Config<wbr>Indexs</a>
-		</li>
-		<li class=" tsd-kind-function">
-			<a href="../globals.html#expression" class="tsd-kind-icon">Expression</a>
-		</li>
-		<li class=" tsd-kind-function">
-			<a href="../globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
-		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -1039,7 +958,7 @@ img { max-width: 100%; }
 });
 deformat.next(Gather);
 <span class="hljs-keyword">let</span> times = <span class="hljs-number">0</span>;
-deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+deformat.handle(log, <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(result);
 });
 <span class="hljs-comment">// 192.168.203.111</span>
@@ -1133,7 +1052,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#after">after</a></p>
 							<ul>
-								<li>Defined in divider.ts:98</li>
+								<li>Defined in divider.ts:139</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1163,7 +1082,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#before">before</a></p>
 							<ul>
-								<li>Defined in divider.ts:89</li>
+								<li>Defined in divider.ts:130</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1186,7 +1105,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 				<a name="handle" class="tsd-anchor"></a>
 				<h3>handle</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">handle<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../globals.html#result" class="tsd-signature-type">Result</a>, gather<span class="tsd-signature-symbol">: </span><a href="../globals.html#gathercallback" class="tsd-signature-type">GatherCallback</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">handle<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../globals.html#result" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, gather<span class="tsd-signature-symbol">: </span><a href="../globals.html#gathercallback" class="tsd-signature-type">GatherCallback</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
@@ -1202,13 +1121,13 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 									Result is the data to be processed. GatherCallback is a callback for processing.
 								GatherCallback accepts Result | undefined.</p>
 							</div>
-							<p>handle是Middleware类被调用时使用的方法, Result为待处理数据,
+							<p>handle是Middleware类被调用时使用的方法, result为待处理Result类型, 如果传入值为string类型, 会自动转为[&quot;undefined&quot;, string]
 							GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined</p>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>result: <a href="../globals.html#result" class="tsd-signature-type">Result</a></h5>
+								<h5>result: <a href="../globals.html#result" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li>
 								<h5>gather: <a href="../globals.html#gathercallback" class="tsd-signature-type">GatherCallback</a></h5>
@@ -1229,7 +1148,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#next">next</a></p>
 							<ul>
-								<li>Defined in divider.ts:76</li>
+								<li>Defined in divider.ts:117</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1268,7 +1187,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nexteach">nextEach</a></p>
 							<ul>
-								<li>Defined in divider.ts:45</li>
+								<li>Defined in divider.ts:86</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1298,7 +1217,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nextindex">nextIndex</a></p>
 							<ul>
-								<li>Defined in divider.ts:55</li>
+								<li>Defined in divider.ts:96</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1329,7 +1248,7 @@ deformat.handle([<span class="hljs-string">"log"</span>, log], <span class="hljs
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="divider.html">Divider</a>.<a href="divider.html#nextlist">nextList</a></p>
 							<ul>
-								<li>Defined in divider.ts:32</li>
+								<li>Defined in divider.ts:73</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

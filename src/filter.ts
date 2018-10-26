@@ -2,9 +2,9 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-23 10:42:51
+ * @Last Modified time: 2018-10-26 08:07:19
  */
-import {Finisher, GatherCallback, Middleware, Result} from "./index";
+import {Finisher, FinisherLike, GatherCallback, Middleware, MiddlewareConfig, MiddlewareFactory, Result} from "./index";
 // import {Pairoption} from "./pair";
 
 /**
@@ -15,10 +15,18 @@ import {Finisher, GatherCallback, Middleware, Result} from "./index";
  * Filter是加工单个Result的Middleware, 处理完后调用next预先指定的Middleware继续下一步处理.
  * Filter的处理的过程可以是过滤、键值转换、计算、变形等操作.
  */
-export abstract class Filter<FilterOption = {}> extends Middleware<FilterOption> {
+export abstract class Filter<Option extends FilterOption = {}> extends Middleware<Option> {
   protected handler: Middleware<any>;
-  constructor(option: FilterOption) {
+  constructor(option: Option) {
     super(option);
+
+    if (option.next) {
+      if (typeof option.next === "string") {
+        this.next(MiddlewareFactory({_: option.next as any}));
+      } else {
+        this.next(MiddlewareFactory(option.next as MiddlewareConfig));
+      }
+    }
   }
   /**
    * The next method accepts a Middleware class or Finisher class type to specify the next step after data processing.
@@ -29,7 +37,7 @@ export abstract class Filter<FilterOption = {}> extends Middleware<FilterOption>
    * filterA.next(filterB);
    * filterB.next(Gather);
    */
-  public next(m: Middleware<any> | typeof Finisher): Filter<FilterOption> {
+  public next(m: Middleware<any> | typeof Finisher): Filter<Option> {
     if (m instanceof Middleware) {
       this.handler = m;
     } else {
@@ -50,4 +58,8 @@ export abstract class Filter<FilterOption = {}> extends Middleware<FilterOption>
   }
 
   protected abstract deal(result: Result): Result | false;
+}
+
+export interface FilterOption {
+  next?: MiddlewareConfig | FinisherLike;
 }

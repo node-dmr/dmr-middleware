@@ -2,9 +2,10 @@
  * @Author: qiansc
  * @Date: 2018-05-18 00:15:16
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-23 10:42:26
+ * @Last Modified time: 2018-10-26 07:52:14
  */
-import {Filter, Finisher, GatherCallback, Middleware, Result} from "./index";
+import {Filter, Finisher, FinisherLike, GatherCallback,
+  Middleware, MiddlewareConfig, MiddlewareFactory, Result} from "./index";
 import ResultsHandler from "./results-handler";
 
 /**
@@ -16,12 +17,52 @@ import ResultsHandler from "./results-handler";
  * Divider通过divide方法将一个result分裂为多个results，然后通过next方法指定Middleware处理后续每个result,
  * 此外Divider提供before/after方法可在divide前后指定Filter对result/results进行处理
  */
-export abstract class Divider<DividerOption = {}> extends Middleware<DividerOption> {
+export abstract class Divider<Option extends DividerOption> extends Middleware<Option> {
   private handlers: ResultsHandler[] = [];
   private beforeFilter: Filter<any>;
   private afterFilter: Filter<any>;
-  constructor(option: DividerOption) {
+  constructor(option: Option) {
     super(option);
+  // if (middleware instanceof Divider) {
+    if (option.nextIndex) {
+      const nexts = option.nextIndex;
+      const action = {};
+      Object.keys(nexts).forEach((index) => {
+        // if (nexts.hasOwnProperty(index)) {
+          action[index] =  MiddlewareFactory(nexts[index]);
+        // }
+      });
+      this.nextIndex(action);
+    }
+
+    if (option.nextEach) {
+      this.nextEach(MiddlewareFactory(option.nextEach));
+    }
+
+    if (option.nextList) {
+      const middlewares: Array<Middleware<any>> = [];
+      for (const conf of option.nextList) {
+        middlewares.push(MiddlewareFactory(conf));
+      }
+      this.nextList(middlewares);
+    }
+
+    if (option.next) {
+      if (typeof option.next === "string") {
+        this.next(MiddlewareFactory({_: option.next as any}));
+      } else {
+        this.next(MiddlewareFactory(option.next as MiddlewareConfig));
+      }
+    }
+
+    if (option.before) {
+      this.before(MiddlewareFactory(option.before) as Filter<any>);
+    }
+
+    if (option.after) {
+      this.after(MiddlewareFactory(option.after) as Filter<any>);
+    }
+  // }
   }
 
   /**
@@ -138,4 +179,13 @@ export abstract class Divider<DividerOption = {}> extends Middleware<DividerOpti
     }
   }
 
+}
+
+export interface DividerOption {
+  next?: MiddlewareConfig | FinisherLike;
+  nextEach?: MiddlewareConfig;
+  nextList?: MiddlewareConfig[];
+  nextIndex?: Array<[string, MiddlewareConfig]> | {[key: string]: MiddlewareConfig};
+  after?: MiddlewareConfig;
+  before?: MiddlewareConfig;
 }
