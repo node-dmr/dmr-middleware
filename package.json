@@ -1,6 +1,6 @@
 {
   "name": "dmr-middleware",
-  "version": "0.0.8",
+  "version": "0.0.9-0",
   "discription": "Utils for node-dmr",
   "scripts": {
     "preversion": "tsc && npm run lint && npm run cover",
