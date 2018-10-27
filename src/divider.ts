@@ -182,6 +182,7 @@ export abstract class Divider<Option extends DividerOption> extends Middleware<O
 }
 
 export interface DividerOption {
+  /** next should be MiddlewareConfig or "Gather"/"Noop" */
   next?: MiddlewareConfig | FinisherLike;
   nextEach?: MiddlewareConfig;
   nextList?: MiddlewareConfig[];

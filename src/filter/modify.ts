@@ -7,7 +7,29 @@
 import * as _ from "underscore";
 import {Filter, FilterOption} from "../filter";
 import {Result} from "../middleware";
-
+/**
+ * Modify(extends Filter) can modify the index or value by modifying the expression or method.
+ * See ModifyOption for details.
+ *
+ * Modify(extends Filter) 能够对index或value进行修改, 修改的方式是提供表达式或方法, 详见ModifyOption
+ *
+ * @example
+ * new Modify({
+ *    index: "`prefix_${index}`",
+ *    value: "value + 'ms'" ,
+ *    next: "Gather"
+ * }).handle(["load", "1000"], (result) => console.log(result));
+ * // ["prefix_load", "1000ms"]
+ *
+ * new Modify({
+ *    index: "`${index}-${RegExp.$1}`",
+ *    value: (index, value) => (RegExp.$2 + "ms"),
+ *    regexp: /(\w+)=(\w+)/g, // or "/(\\w+)=(\\w+)/g"
+ *    next: "Gather",
+ *    // regexpTarget: "index",
+ * }).handle(["20180901", "load=1000"], (result) => console.log(result));
+ * // ["20180901-load", "1000ms"]
+ */
 export class Modify extends Filter<ModifyOption> {
   protected indexExp: ModifyFn;
   protected valueExp: ModifyFn;
@@ -58,11 +80,40 @@ export class Modify extends Filter<ModifyOption> {
 }
 
 export interface  ModifyOption extends FilterOption {
+  /**
+   * New index template string or function
+   * 新的index模板或function方法, 格式同value
+   */
   index?: string | ModifyFn;
+  /**
+   * New value template string or function
+   * 新的value模板或function方法
+   * @example
+   * // ["i", "v"]
+   * option.value = "value"; // new Value => v
+   * option.value = "'_' + value"; // new Value => _v
+   * option.value = "`@${value}`"; // new Value => @v
+   * option.value = (index, value, _) => index + value; // iv
+   */
   value?: string | ModifyFn;
+  /**
+   * process index/value by using RegExp
+   * 使用正则表达式去处理value, 如果需要处理index, 需要设定regexpTarget为"index"
+   * @example
+   * option.regexp = /(\w+)=(\w+)/g;
+   * option.regexp = "/(\\w+)=(\\w+)/g";
+   */
   regexp?: string | RegExp;
+  /**
+   * regexp target
+   * 正则表达式的目标
+   */
   regexpTarget?: "index" | "value";
 }
+
+/**
+ * @hidden and @ignore
+ */
 function exp(expr: string | ModifyFn): ModifyFn {
   if (typeof expr === "string") {
     return eval.call(null, "(index, value, _) => (" + expr + ").toString()");
@@ -70,5 +121,8 @@ function exp(expr: string | ModifyFn): ModifyFn {
     return expr;
   }
 }
-
+/**
+ * ModifyFn (index: string, value: string, _?) => string | undefined;
+ * _ is underscore
+ */
 type ModifyFn = (index: string, value: string, _?) => string | undefined;

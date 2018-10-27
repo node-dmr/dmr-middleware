@@ -2,7 +2,7 @@
  * @Author: qiansc
  * @Date: 2018-09-20 16:13:50
  * @Last Modified by: qiansc
- * @Last Modified time: 2018-10-25 20:50:36
+ * @Last Modified time: 2018-10-22 15:59:49
  */
 import {expect} from "chai";
 import {Gather, Json, MiddlewareFactory as factory, Result} from "../src/index";
@@ -12,6 +12,29 @@ describe("Divider.JSON Test", () => {
   it ("Divider.Json easy New", () => {
     const txt = "{A: \'a\',\"B\":1,\"C\":\"20180909\"}";
     const json = new Json();
+
+    // result.json().each().when({index: A}).;
+
+    // fxa = divide(json).each().when(filter).modify();
+    // fxb = copy(json).fx(
+    //   each(1).modify(A),
+    //   index(2).modify(B)
+    // );
+    // fxc = fxb.each(1).modify(A);
+    // fxd = fxb.index(2).modify(B);
+
+    // results = fxa(result);
+
+    // results = fx(fxc,fxd) (result);
+    // result =
+
+    // json.done((result: Result) => {
+    //   // return result.whenIndex("a");
+    //   return result.modify();
+    // }).fetch();
+
+    // (result) => result[];
+
     json.next(Gather);
     const rs: Result[] = [];
     console.log("JSON String : ", txt);

@@ -39,6 +39,12 @@ interface ReverseConfig extends FilterOption {
 interface SplitConfig extends SplitOption {
   _: "Split";
 }
+
+/**
+ * A set of Config types that can be nested in the next(and others) method in Config
+ *
+ * 可以在Config中的next类方法中嵌套使用的Config类型集合
+ */
 export type MiddlewareConfig = ConditionConfig
 | CopyConfig
 | DeformatConfig
@@ -50,5 +56,9 @@ export type MiddlewareConfig = ConditionConfig
 | ReverseConfig
 | SplitConfig
 ;
-
+/**
+ * A set of Finisher types that can be use in the next method in Config
+ *
+ * 可以在Config中的next方法中嵌套使用的Config类型集合
+ */
 export type FinisherLike = "Gather" | "Noop";

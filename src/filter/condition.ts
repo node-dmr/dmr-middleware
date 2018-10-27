@@ -8,12 +8,23 @@ import * as _ from "underscore";
 import {Filter, FilterOption} from "../filter";
 import {Result} from "../middleware";
 
+/**
+ * Condition is a conditional filter that determines whether to continue the next operation,
+ * that based on the boolean value returned by the ConditionFn method.
+ *
+ * Condition 是一个条件过滤器, 根据ConditionFn方法返回的boolean值决定是否继续next操作
+ * @example
+ * const filter = new Condition({
+ *  fn: (index, value) => parseInt(value) > 0,
+ * }).next(Gather);
+ * filter.handle("100", (result) => console.log(result)); // ["undefined", "100"];
+ * filter.handle("-100", (result) => console.log(result));
+ */
 export class Condition extends Filter<ConditionOption> {
   protected exp: ConditionFn;
   constructor(option: ConditionOption) {
     option.type = option.type ||  "white";
     super(option);
-    // $ - index  $1 - value
     if (typeof option.fn === "string") {
       this.exp = eval.call(null, "(index, value, _) => (" + option.fn + ")");
     } else if (option.fn) {
@@ -41,7 +52,22 @@ export class Condition extends Filter<ConditionOption> {
 }
 
 export interface ConditionOption extends FilterOption {
+  /**
+   * fn is a ConditionFn or ConditionFnLike string
+   * _ is underscore
+   * @example
+   * option.fn = (index: string, value: string, _?) => parseInt(value) > 1;
+   * option.fn = "value > 1";
+   */
   fn: ConditionFn | string;
+  /**
+   * type of Condition filter ( whitelisted / blacklisted ). The default is whitelist.
+   * type参数指定该Condition过滤器是白名单过滤还是黑名单, 默认是白名单
+   */
   type?: "white" | "black";
 }
+/**
+ * ConditionFn (index: string, value: string, _?) => boolean
+ * _ is underscore
+ */
 type ConditionFn = (index: string, value: string, _?) => boolean;

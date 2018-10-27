@@ -4,32 +4,31 @@
  * @Last Modified by: qiansc
  * @Last Modified time: 2018-10-25 20:43:51
  */
-import {Condition, Copy, Deformat, Filter, Json, Modify, Regexp, Reverse, Split} from "./index";
-import {Divider, Gather, Middleware, MiddlewareConfig, Noop} from "./index";
+import {Condition, Copy, Deformat, Json, Modify, Regexp, Reverse, Split} from "./index";
+import {Gather, MiddlewareConfig, Noop} from "./index";
 import * as M from "./index";
 
-// export interface MiddlewareConfig {
-//   [index: string]: any;
-//   _: keyof A;
-//   after?: MiddlewareConfig;
-//   before?: MiddlewareConfig;
-//   next?: MiddlewareConfig | string;
-//   nextEach?: MiddlewareConfig;
-//   nextList?: MiddlewareConfig[];
-//   nextIndex?: Array<[string, MiddlewareConfig]> | {[key: string]: MiddlewareConfig};
-// }
-// const MiddlewareConfigIndexs = ["_", "next", "nextEach", "nextList", "nextIndex", "before", "after"];
+/**
+ * The factory method can accept MiddlewareConfig and return the generated middleware instance.
+ * MiddlewareFactory will automatically infer the type of the instance and return based on config
+ *
+ * Dmr-middleware的工厂方法可以接受MiddlewareConfig, 并返回生成的middleware实例
+ * MiddlewareFactory会根据config自动推断实例的类型并返回.
+ *
+ * @example
+ * const split =  MiddlewareFactory({_: "Split", separater: ",", next: "Gather"});
+ * split.handle("A,B,C,D", (result) => {console.log(result); });
+ */
+export function MiddlewareFactory<T extends MiddlewareConfig, S = ClassMaps[T["_"]]>(config: T): S {
+  const option = configToOption(config);
+  const middleware = new (M[config._] as any)(option) as S;
+  return middleware as S;
+}
 
-// interface A {
-//   Condition;
-//   Copy;
-// }
-
-// const a = {
-//   condition: Condition,
-//   copy: Copy,
-// };
-
+/**
+ * @hidden and @ignore
+ * Type map of all middlewares
+ */
 interface ClassMaps {
   Condition: Condition;
   Copy: Copy;
@@ -40,15 +39,7 @@ interface ClassMaps {
   Noop: Noop;
   Regexp: Regexp;
   Reverse: Reverse;
-  // series: Series;
   Split: Split;
-}
-
-export function MiddlewareFactory<T extends MiddlewareConfig, S = ClassMaps[T["_"]]>(config: T): S {
-  const option = configToOption(config);
-  // let middleware: config._;
-  const middleware = new (M[config._] as any)(option) as S;
-  return middleware as S;
 }
 
 /**

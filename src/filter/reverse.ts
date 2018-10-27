@@ -7,6 +7,18 @@
 import {Filter, FilterOption} from "../filter";
 import {Result} from "../middleware";
 
+/**
+ * Reverse(extends Filter) exchanges index and value.
+ *
+ * Reverse是一个会交换index与value的Filter
+ *
+ * @example
+ * new Reverse().next(Gather).handle(
+ *    ["a", "b"],
+ *    (result) => console.log(result),
+ * );
+ * // ["b", "a"]
+ */
 export class Reverse extends Filter {
   constructor(option: FilterOption = {}) {
     super(option);

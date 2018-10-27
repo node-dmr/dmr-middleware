@@ -952,9 +952,6 @@ img { max-width: 100%; }
 			<a href="classes/split.html" class="tsd-kind-icon">Split</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-is-not-exported">
-			<a href="interfaces/classmaps.html" class="tsd-kind-icon">Class<wbr>Maps</a>
-		</li>
-		<li class=" tsd-kind-interface tsd-is-not-exported">
 			<a href="interfaces/conditionconfig.html" class="tsd-kind-icon">Condition<wbr>Config</a>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -1032,9 +1029,6 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a>
 		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="globals.html#exp" class="tsd-kind-icon">exp</a>
-		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -1080,7 +1074,6 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/classmaps.html" class="tsd-kind-icon">Class<wbr>Maps</a></li>
 							<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/conditionconfig.html" class="tsd-kind-icon">Condition<wbr>Config</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/conditionoption.html" class="tsd-kind-icon">Condition<wbr>Option</a></li>
 							<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/copyconfig.html" class="tsd-kind-icon">Copy<wbr>Config</a></li>
@@ -1117,7 +1110,6 @@ img { max-width: 100%; }
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#middlewarefactory" class="tsd-kind-icon">Middleware<wbr>Factory</a></li>
-							<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#exp" class="tsd-kind-icon">exp</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1131,9 +1123,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Condition<wbr>Fn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in filter/condition.ts:47</li>
+						<li>Defined in filter/condition.ts:81</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ConditionFn (index: string, value: string, _?) =&gt; boolean
+						_ is underscore</p>
+					</div>
+				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
@@ -1168,9 +1166,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Finisher<wbr>Like<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Gather"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"Noop"</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in types.ts:54</li>
+						<li>Defined in types.ts:64</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A set of Finisher types that can be use in the next method in Config</p>
+					</div>
+					<p>可以在Config中的next方法中嵌套使用的Config类型集合</p>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="gathercallback" class="tsd-anchor"></a>
@@ -1178,9 +1182,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Gather<wbr>Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in middleware.ts:39</li>
+						<li>Defined in middleware.ts:49</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>GatherCallback is a callback for processing. GatherCallback accepts Result | undefined.</p>
+					</div>
+					<p>GatherCallback为处理完毕时的回调, GatherCallback接受的参数为Result | undefined</p>
+				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
@@ -1209,9 +1219,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Middleware<wbr>Config<span class="tsd-signature-symbol">:</span> <a href="interfaces/conditionconfig.html" class="tsd-signature-type">ConditionConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/copyconfig.html" class="tsd-signature-type">CopyConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/deformatconfig.html" class="tsd-signature-type">DeformatConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/gatherconfig.html" class="tsd-signature-type">GatherConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/jsonconfig.html" class="tsd-signature-type">JsonConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/modifyconfig.html" class="tsd-signature-type">ModifyConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/noopconfig.html" class="tsd-signature-type">NoopConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/regexpconfig.html" class="tsd-signature-type">RegexpConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/reverseconfig.html" class="tsd-signature-type">ReverseConfig</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/splitconfig.html" class="tsd-signature-type">SplitConfig</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in types.ts:42</li>
+						<li>Defined in types.ts:48</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A set of Config types that can be nested in the next(and others) method in Config</p>
+					</div>
+					<p>可以在Config中的next类方法中嵌套使用的Config类型集合</p>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-is-not-exported">
 				<a name="modifyfn" class="tsd-anchor"></a>
@@ -1219,9 +1235,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Modify<wbr>Fn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in filter/modify.ts:74</li>
+						<li>Defined in filter/modify.ts:140</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ModifyFn (index: string, value: string, _?) =&gt; string | undefined;
+						_ is underscore</p>
+					</div>
+				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
@@ -1259,9 +1281,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in middleware.ts:38</li>
+						<li>Defined in middleware.ts:43</li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The first item of the Result type is index, and the second item is value.</p>
+					</div>
+					<p>Result类型第一项为index, 第二项为value</p>
+				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
@@ -1276,9 +1304,24 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in factory.ts:47</li>
+								<li>Defined in factory.ts:26</li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The factory method can accept MiddlewareConfig and return the generated middleware instance.
+								MiddlewareFactory will automatically infer the type of the instance and return based on config</p>
+							</div>
+							<p>Dmr-middleware的工厂方法可以接受MiddlewareConfig, 并返回生成的middleware实例
+							MiddlewareFactory会根据config自动推断实例的类型并返回.</p>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><pre><code class="language-Typescript">
+<span class="hljs-keyword">const</span> split =  MiddlewareFactory({_: <span class="hljs-string">"Split"</span>, separater: <span class="hljs-string">","</span>, next: <span class="hljs-string">"Gather"</span>});
+split.handle(<span class="hljs-string">"A,B,C,D"</span>, <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {<span class="hljs-built_in">console</span>.log(result); });</code></pre>
+								</dd>
+							</dl>
+						</div>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
@@ -1295,29 +1338,6 @@ img { max-width: 100%; }
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">S</span></h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
-				<a name="exp" class="tsd-anchor"></a>
-				<h3>exp</h3>
-				<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">exp<span class="tsd-signature-symbol">(</span>expr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#modifyfn" class="tsd-signature-type">ModifyFn</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#modifyfn" class="tsd-signature-type">ModifyFn</a></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in filter/modify.ts:66</li>
-							</ul>
-						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>expr: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#modifyfn" class="tsd-signature-type">ModifyFn</a></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="globals.html#modifyfn" class="tsd-signature-type">ModifyFn</a></h4>
 					</li>
 				</ul>
 			</section>

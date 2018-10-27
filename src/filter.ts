@@ -61,5 +61,6 @@ export abstract class Filter<Option extends FilterOption = {}> extends Middlewar
 }
 
 export interface FilterOption {
+  /** next should be MiddlewareConfig or "Gather"/"Noop" */
   next?: MiddlewareConfig | FinisherLike;
 }

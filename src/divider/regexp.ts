@@ -53,6 +53,11 @@ export class Regexp extends Divider<RegexpOption> {
 }
 
 export interface RegexpOption extends DividerOption {
-  /** RegExp or regexp */
+  /**
+   * RegExp or regexpString
+   * @example
+   * option.regexp = /(\w+)=(\w+)/g;
+   * option.regexp = "/(\\w+)=(\\w+)/g";
+   */
   regexp: string | RegExp;
 }
